@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{33CB469F-0301-4FBF-BA85-0636A3CF7603}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Chess</RootNamespace>
+    <AssemblyName>Chess</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Externalconsole>true</Externalconsole>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Externalconsole>true</Externalconsole>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Model\Board.cs" />
+    <Compile Include="Model\Square.cs" />
+    <Compile Include="Model\Location.cs" />
+    <Compile Include="Model\Pieces\Piece.cs" />
+    <Compile Include="Model\Move.cs" />
+    <Compile Include="Model\Pieces\King.cs" />
+    <Compile Include="Model\Pieces\Pawn.cs" />
+    <Compile Include="Model\Pieces\Empty.cs" />
+    <Compile Include="Model\InputType.cs" />
+    <Compile Include="Model\Pieces\MoveType.cs" />
+    <Compile Include="Model\Pieces\SetUpBoard.cs" />
+    <Compile Include="Model\Pieces\SetUpChessBoard.cs" />
+    <Compile Include="Model\Pieces\Queen.cs" />
+    <Compile Include="Model\Pieces\Rook.cs" />
+    <Compile Include="Model\Pieces\Bishop.cs" />
+    <Compile Include="Model\Pieces\Knight.cs" />
+    <Compile Include="View\View.cs" />
+    <Compile Include="View\TextView.cs" />
+    <Compile Include="Controller\Controller.cs" />
+    <Compile Include="Controller\InputParser.cs" />
+    <Compile Include="Controller\ChessParser.cs" />
+    <Compile Include="View\Player.cs" />
+    <Compile Include="View\Human.cs" />
+    <Compile Include="Model\Game.cs" />
+    <Compile Include="Model\ViewListener.cs" />
+    <Compile Include="Model\TextListener.cs" />
+    <Compile Include="Model\TurnType.cs" />
+    <Compile Include="View\CommandListener.cs" />
+    <Compile Include="View\CommandTextListener.cs" />
+    <Compile Include="Model\ChessGame.cs" />
+    <Compile Include="Model\Rules\Rules.cs" />
+    <Compile Include="Model\Rules\RulesDecorator.cs" />
+    <Compile Include="Model\Rules\Draw.cs" />
+    <Compile Include="Model\Rules\ChessRules.cs" />
+    <Compile Include="Model\Rules\Castle.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Model\" />
+    <Folder Include="Model\Pieces\" />
+    <Folder Include="View\" />
+    <Folder Include="Controller\" />
+    <Folder Include="Model\Rules\" />
+  </ItemGroup>
+</Project>

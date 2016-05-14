@@ -1,0 +1,17 @@
+﻿<Properties StartupItem="Chess/Chess.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Chess/Model/Rules/RulesDecorator.cs">
+    <Files>
+      <File FileName="Chess/Model/Rules/RulesDecorator.cs" Line="16" Column="22" />
+      <File FileName="Chess/Model/Rules/Draw.cs" Line="11" Column="3" />
+      <File FileName="Chess/Model/Rules/Rules.cs" Line="15" Column="28" />
+      <File FileName="Chess/Model/Rules/ChessRules.cs" Line="13" Column="4" />
+      <File FileName="Chess/Program.cs" Line="24" Column="21" />
+      <File FileName="Chess/Model/Rules/Castle.cs" Line="26" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
