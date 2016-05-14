@@ -52,23 +52,23 @@ namespace Chess
 
 			int colourCount = 1;
 
-			s[7,0] = new Square (colours[0], new Rook("white", new Location(0,0)));
-			s[7,1] = new Square (colours[1], new Knight("white", new Location(1,0)));
-			s[7,2] = new Square (colours[0], new Bishop("white", new Location(2,0)));
-			s[7,3] = new Square (colours[1], new Queen("white", new Location(3,0)));
-			s[7,4] = new Square (colours[0], new King("white", new Location(4,0)));
-			s[7,5] = new Square (colours[1], new Bishop("white", new Location(5,0)));
-			s[7,6] = new Square (colours[0], new Knight("white", new Location(6,0)));
-			s[7,7] = new Square (colours[1], new Rook("white", new Location(7,0)));
+			s[7,0] = new Square (colours[0], new Rook("white", new Location(0,7)));
+			s[7,1] = new Square (colours[1], new Knight("white", new Location(1,7)));
+			s[7,2] = new Square (colours[0], new Bishop("white", new Location(2,7)));
+			s[7,3] = new Square (colours[1], new Queen("white", new Location(3,7)));
+			s[7,4] = new Square (colours[0], new King("white", new Location(4,7)));
+			s[7,5] = new Square (colours[1], new Bishop("white", new Location(5,7)));
+			s[7,6] = new Square (colours[0], new Knight("white", new Location(6,7)));
+			s[7,7] = new Square (colours[1], new Rook("white", new Location(7,7)));
 
-			s[0,0] = new Square (colours[1], new Rook("black", new Location(0,7)));
-			s[0,1] = new Square (colours[0], new Knight("black", new Location(1,7)));
-			s[0,2] = new Square (colours[1], new Bishop("black", new Location(2,7)));
-			s[0,3] = new Square (colours[0], new Queen("black", new Location(3,7)));
-			s[0,4] = new Square (colours[1], new King("black", new Location(4,7)));
-			s[0,5] = new Square (colours[0], new Bishop("black", new Location(5,7)));
-			s[0,6] = new Square (colours[1], new Knight("black", new Location(6,7)));
-			s[0,7] = new Square (colours[0], new Rook("black", new Location(7,7)));
+			s[0,0] = new Square (colours[1], new Rook("black", new Location(0,0)));
+			s[0,1] = new Square (colours[0], new Knight("black", new Location(1,0)));
+			s[0,2] = new Square (colours[1], new Bishop("black", new Location(2,0)));
+			s[0,3] = new Square (colours[0], new Queen("black", new Location(3,0)));
+			s[0,4] = new Square (colours[1], new King("black", new Location(4,0)));
+			s[0,5] = new Square (colours[0], new Bishop("black", new Location(5,0)));
+			s[0,6] = new Square (colours[1], new Knight("black", new Location(6,0)));
+			s[0,7] = new Square (colours[0], new Rook("black", new Location(7,0)));
 
 			for(int i = 0; i < 8; i++)
 			{

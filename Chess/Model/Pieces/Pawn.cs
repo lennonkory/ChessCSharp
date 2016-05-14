@@ -110,7 +110,7 @@ namespace Chess
 		public override MoveType canMove (Board board, Rules rules, Location to)
 		{
 
-			MoveType mt = MoveType.NONE;
+			MoveType mt = MoveType.INVALID;
 
 
 			if (playerPieceOnLocation(board, to))

@@ -11,6 +11,11 @@ namespace Chess
 			this.rules = r;
 		}
 
+		public override void setBoard(Board b)
+		{
+			rules.setBoard (b);
+		}
+
 		public override bool gameOver ()
 		{
 			rules.gameOver ();

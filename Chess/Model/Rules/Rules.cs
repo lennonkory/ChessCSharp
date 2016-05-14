@@ -9,6 +9,8 @@ namespace Chess
 		{
 		}
 
+		public abstract void setBoard(Board b);
+
 		//Returns true if the game is over
 		public abstract bool gameOver();
 

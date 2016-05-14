@@ -19,11 +19,14 @@ namespace Chess
 			c.start ();
 			*/
 
-			Rules r = new ChessRules ();
-			r = new Draw (r);
-			r = new Castle (r);
-			r.gameOver ();
+			Board b = new Board (new SetUpChessBoard());
 
+			Rules r = new ChessRules ();
+			r.setBoard (b);
+
+			Game g = new ChessGame (b, new Human("white"), new Human("black"), r);
+			Move m = new Move (new Location(4, 7), new Location(4,0));
+			g.test (m);
 		}
 	}
 }

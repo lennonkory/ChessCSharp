@@ -4,8 +4,10 @@ namespace Chess
 {
 	public class ChessGame : Game
 	{
-		public ChessGame (Board board, Player o, Player t) : base(board,o,t)
+		
+		public ChessGame (Board board, Player o, Player t, Rules rules) : base(board,o,t, rules)
 		{
+
 		}
 
 		public override TurnType turn(Move move)//should return ENUM if invalid (ie why is it invalid)
@@ -25,7 +27,7 @@ namespace Chess
 				drawBoard ();
 				playerTurn++;
 				playerTurn %= 2;
-				sendMessage ("Player " + (playerTurn + 1) +" it's your turn");
+				sendMessage ("Player " + (playerTurn + 1) + " it's your turn");
 			} else if (mt == MoveType.CASTLE) {
 				//Do castle stuff
 			} 
@@ -37,7 +39,7 @@ namespace Chess
 			return TurnType.VALID;
 
 		}
-
+			
 	}
 }
 

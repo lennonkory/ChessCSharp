@@ -14,11 +14,12 @@ namespace Chess
 
 		private ViewListener vl;
 
-		public Game (Board board, Player o, Player t)
+		public Game (Board board, Player o, Player t, Rules r)
 		{
 			this.one = o;
 			this.two = t;
 			this.board = board;
+			this.rules = r;
 			playerTurn = 0;
 
 		}
@@ -46,6 +47,11 @@ namespace Chess
 		public void sendMessage(string message)
 		{
 			this.vl.sendMessage (message);
+		}
+
+		public void test(Move m)
+		{
+			this.rules.validMove(this.board,m);
 		}
 	}
 }

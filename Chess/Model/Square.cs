@@ -49,6 +49,11 @@ namespace Chess
 			return "Colour: " + Colour + " " + this.piece.ToString();
 		}
 
+		public string getPieceName()
+		{
+			return piece.Name;
+		}
+
 	}
 }
 

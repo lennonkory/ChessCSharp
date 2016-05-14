@@ -54,7 +54,7 @@ namespace Chess
 
 		public override string ToString()
 		{
-			return "Name: " + this.Name + " Location: " + this.Location;
+			return "Name: " + this.Name + " Location: " + this.Location + " Colour: " + this.colour;
 		}
 
 	}

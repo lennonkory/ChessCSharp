@@ -11,7 +11,6 @@ namespace Chess
 		{
 			squares = new Square[8, 8];
 
-
 			string[] colours = new string[2];
 
 			colours [0] = "black";
@@ -131,6 +130,48 @@ namespace Chess
 			}
 
 			return -1;
+		}
+
+		public string getPieceName(Location location)
+		{
+			return squares [location.Ycord, location.Xcord].getPieceName ();
+		}
+
+		public string getPieceName(int x, int y)
+		{
+			return squares [y, x].getPieceName ();
+		}
+
+		public Piece findPieceByNameAndColour(string name, string colour)
+		{
+			foreach(Square s in squares)
+			{
+				
+				Piece p = s.getPiece ();
+
+				if(p.colour.Equals(colour) && p.Name.Equals(name))
+				{
+					return p;
+				}
+			}
+			return null;
+		}
+
+		//Can spped this up by having a list of pieces for each player
+		public ICollection<Piece> getPlayersPieces(string colour)
+		{
+			ICollection<Piece> pieces = new List<Piece> ();
+			
+			foreach(Square s in squares)
+			{
+				Piece p = s.getPiece ();
+				if (p.colour.Equals (colour)) 
+				{
+					pieces.Add (p);
+				}
+			}
+
+			return pieces;
 		}
 
 	}
