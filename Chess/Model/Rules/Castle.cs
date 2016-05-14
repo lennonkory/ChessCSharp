@@ -8,9 +8,9 @@ namespace Chess
 		{
 		}
 
-		public override bool gameOver()
+		public override bool gameOver(Board b)
 		{
-			base.gameOver ();
+			base.gameOver (b);
 			Console.WriteLine ("Rules Decorator Castle");
 			return false;
 		}

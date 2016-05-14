@@ -29,15 +29,6 @@ namespace Chess
 
 			}
 
-			for(int y = 2 ; y < 6; y++)
-			{
-				for(int x = 0 ; x < 8; x++)
-				{
-					s [y, x] = new Square (colours[colourCount % 2], new Empty(new Location(x,y)));
-					colourCount++;
-				}
-			}
-
 			return s;
 		}
 

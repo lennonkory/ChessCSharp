@@ -8,25 +8,30 @@ namespace Chess
 	{
 		public static void Main (string[] args)
 		{
-			/*
-			Board b = new Board (new SetUpChessBoard());
+
+			BoardParser bp = new ChessBoardParser ();
+			string boardName = "board2.txt";
+			ICollection<Piece> pieces = bp.parseBoard ("../../boards/"+boardName);
+
+			Board b = new Board (new SetUpChessBoard(), pieces);
 			View v = new TextView ();
-			Game g = new ChessGame (b, new Human("white"), new Human("black"));
-			Controller c = new Controller (v,g);
 
-			v.setCommandListener (new CommandTextListener(c));
-
-			c.start ();
-			*/
-
-			Board b = new Board (new SetUpChessBoard());
-
-			Rules r = new ChessRules ();
+			ChessRules r = new ChessRules ();
 			r.setBoard (b);
+			Game g = new ChessGame (b,null,null,r);
 
-			Game g = new ChessGame (b, new Human("white"), new Human("black"), r);
-			Move m = new Move (new Location(4, 7), new Location(4,0));
-			g.test (m);
+			Move m = new Move (new Location(4,5), new Location(4,2));
+			Piece p = b.getPiece (4,5);
+
+			ICollection<Location> moves = p.getMoves (b,r);
+
+			foreach(var l in moves)
+			{
+				Console.WriteLine (l);
+			}
+			v.drawBoard (b);
+
+			r.inCheck (b, 0);
 		}
 	}
 }

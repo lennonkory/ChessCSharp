@@ -14,7 +14,6 @@ namespace Chess
 			get;
 			set;
 		}
-
 		
 		public ChessRules ()
 		{
@@ -38,9 +37,9 @@ namespace Chess
 
 		}
 
-		public override bool gameOver()
+		public override bool gameOver(Board b)
 		{
-			Console.WriteLine ("Chess Rules");
+			checkmate (b, 0);
 			return false;
 		}
 
@@ -48,15 +47,44 @@ namespace Chess
 		{
 			int colour = board.getPieceColourInt (move.From);
 
-			inCheck (board,colour);
+			Console.WriteLine(inCheck (board,colour));
 
 			return true;
 		}
 
-
-		private bool inCheck(Board b, int colour )
+		private bool checkmate(Board b, int colour)
 		{
 			Piece k = null;
+
+			string c = "";
+
+			//GetType opp colour
+			if (colour == 0) {
+				c = "black";
+				k = KingWhite;
+			} 
+			else
+			{
+				c = "white";
+				k = KingBlack;
+			}
+
+			Console.WriteLine (k.Location);
+
+			ICollection<Location> pieces = k.getMoves (b, this);
+
+			foreach(Location l in pieces )
+			{
+				MoveType mt = k.canMove (b, this, l);
+
+			}
+			return false;
+		}
+
+		public bool inCheck(Board b, int colour )
+		{
+			Piece k = null;
+
 			string c = "";
 
 			//GetType opp colour
@@ -77,7 +105,7 @@ namespace Chess
 			foreach(Piece p in pieces)
 			{
 				Console.Write (p + " ");
-				Console.WriteLine (p.canMove(b,this, k.Location));
+				Console.WriteLine (p.canMove(b, this, k.Location));
 			}
 
 			return false;

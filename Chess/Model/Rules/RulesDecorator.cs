@@ -16,9 +16,9 @@ namespace Chess
 			rules.setBoard (b);
 		}
 
-		public override bool gameOver ()
+		public override bool gameOver (Board b)
 		{
-			rules.gameOver ();
+			rules.gameOver (b);
 			return false;
 		}
 

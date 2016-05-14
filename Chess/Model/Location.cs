@@ -6,6 +6,8 @@ namespace Chess
 	{
 		private int xcord;
 		private int ycord;
+		private int sideIndex = 0;
+		private char bottomIndex = ' ';
 
 		public int Xcord
 		{
@@ -39,9 +41,44 @@ namespace Chess
 			this.ycord = l.ycord;
 		}
 
+		private void setIndex()
+		{
+			sideIndex = 8 - ycord;
+
+			switch(xcord)
+			{
+				case 0:
+					bottomIndex = 'A';
+					break;
+				case 1:
+					bottomIndex = 'B';
+					break;
+				case 2:
+					bottomIndex = 'C';
+					break;
+				case 3:
+					bottomIndex = 'D';
+					break;
+				case 4:
+					bottomIndex = 'E';
+					break;
+				case 5:
+					bottomIndex = 'F';
+					break;
+				case 6:
+					bottomIndex = 'G';
+					break;
+				case 7:
+					bottomIndex = 'H';
+					break;
+			}
+
+		}
+
 		public override string ToString ()
 		{
-			return "X: " + this.Xcord + " Y: " + this.Ycord;
+			setIndex ();
+			return "X: " + this.Xcord + "("+bottomIndex +")" + " Y: " + this.Ycord + "("+sideIndex +")";
 		}
 
 		public bool isValid()

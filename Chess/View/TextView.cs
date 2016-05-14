@@ -13,6 +13,7 @@ namespace Chess
 		{
 			for(int y = 0; y < 8; y++)
 			{
+				Console.Write (8 - y + " ");
 				for(int x = 0; x < 8; x++)
 				{
 					Piece p = board.getPiece (x, y);
@@ -20,6 +21,7 @@ namespace Chess
 				}
 				Console.WriteLine ();
 			}
+			Console.WriteLine ("   A  B  C  D  E  F  G  H");
 		}
 
 		public override void showMessage(string message)

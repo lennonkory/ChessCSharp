@@ -33,6 +33,11 @@ namespace Chess
 			squares = sb.setUpBoard();
 		}
 
+		public Board(SetUpBoard sb, ICollection<Piece> pieces)
+		{
+			squares = sb.setUpBoard(pieces);
+		}
+
 		//STUB
 		public string getPieceColour(Location l){
 			return squares[l.Ycord,l.Xcord].getPiece().colour;

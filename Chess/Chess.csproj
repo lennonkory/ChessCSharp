@@ -70,6 +70,8 @@
     <Compile Include="Model\Rules\Draw.cs" />
     <Compile Include="Model\Rules\ChessRules.cs" />
     <Compile Include="Model\Rules\Castle.cs" />
+    <Compile Include="BoardParser.cs" />
+    <Compile Include="ChessBoardParser.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -78,5 +80,10 @@
     <Folder Include="View\" />
     <Folder Include="Controller\" />
     <Folder Include="Model\Rules\" />
+    <Folder Include="boards\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="boards\board1.txt" />
+    <None Include="boards\board2.txt" />
   </ItemGroup>
 </Project>
