@@ -7,6 +7,11 @@ namespace Chess
 		private Location to;
 		private Location from;
 
+		public MoveType Type {
+			get;
+			set;
+		}
+
 		public Location To{
 			get { return to;}
 			set { to = value;}

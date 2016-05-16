@@ -37,8 +37,7 @@ namespace Chess
 		{
 			squares = sb.setUpBoard(pieces);
 		}
-
-		//STUB
+			
 		public string getPieceColour(Location l){
 			return squares[l.Ycord,l.Xcord].getPiece().colour;
 		}
@@ -106,8 +105,10 @@ namespace Chess
 			squares [p.Location.Ycord, p.Location.Xcord].setPiece (p);
 		}
 
-		public void movePiece(Move move)
+		//Returns piece that was cpatured.
+		public Piece movePiece(Move move)
 		{
+
 			Location to = move.To;
 			Location from = move.From;
 			//REMEMBER CHECK FOR CASTLE
@@ -116,11 +117,18 @@ namespace Chess
 				// Remember to remove pieces from players.
 
 			}
+
 			Piece p = squares [from.Ycord, from.Xcord].getPiece ();
+			Piece captured = squares [to.Ycord, to.Xcord].getPiece ();
+
 			p.Location = to;
+
 			squares [to.Ycord, to.Xcord].setPiece (p);
 			squares [from.Ycord, from.Xcord].setPiece (new Empty (from));
 
+			p.Moves++;
+
+			return captured;
 
 		}
 

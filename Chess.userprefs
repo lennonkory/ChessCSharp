@@ -1,11 +1,12 @@
 ﻿<Properties StartupItem="Chess/Chess.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Chess/boards/board1.txt">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Chess/Controller/Controller.cs">
     <Files>
-      <File FileName="Chess/Program.cs" Line="13" Column="36" />
-      <File FileName="Chess/BoardParser.cs" Line="9" Column="50" />
-      <File FileName="Chess/ChessBoardParser.cs" Line="61" Column="5" />
-      <File FileName="Chess/boards/board1.txt" Line="8" Column="9" />
+      <File FileName="Chess/Program.cs" Line="24" Column="10" />
+      <File FileName="Chess/Model/Board.cs" Line="1" Column="1" />
+      <File FileName="Chess/boards/board2.txt" Line="1" Column="1" />
+      <File FileName="Chess/Model/ChessGame.cs" Line="25" Column="33" />
+      <File FileName="Chess/Controller/Controller.cs" Line="26" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

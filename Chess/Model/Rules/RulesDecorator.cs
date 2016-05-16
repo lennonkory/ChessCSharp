@@ -24,7 +24,9 @@ namespace Chess
 
 		public override bool validMove(Board board, Move move)
 		{
-			return this.rules.validMove (board, move);
+			bool check = this.rules.validMove (board, move);
+			Console.WriteLine ("Rules Decorator");
+			return check;
 		}
 
 	}

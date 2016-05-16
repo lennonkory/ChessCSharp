@@ -27,6 +27,8 @@ namespace Chess
 
 		public void play(string command)
 		{
+			Console.WriteLine ("Play");
+
 			InputType parse = ip.parseInput (command);
 
 			if(parse == InputType.INVALID)

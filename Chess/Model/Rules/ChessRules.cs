@@ -45,44 +45,63 @@ namespace Chess
 
 		public override bool validMove(Board board, Move move)
 		{
-			int colour = board.getPieceColourInt (move.From);
-
-			Console.WriteLine(inCheck (board,colour));
+			Console.WriteLine ("Chess rules");
 
 			return true;
 		}
-
-		private bool checkmate(Board b, int colour)
+		//Public only for testing
+		public bool checkmate(Board b, int colour)
 		{
 			Piece k = null;
 
-			string c = "";
-
 			//GetType opp colour
 			if (colour == 0) {
-				c = "black";
 				k = KingWhite;
 			} 
 			else
 			{
-				c = "white";
 				k = KingBlack;
 			}
 
-			Console.WriteLine (k.Location);
+			//Console.WriteLine (k.Location);
 
-			ICollection<Location> pieces = k.getMoves (b, this);
+			Location kingLocation = new Location(k.Location);
 
-			foreach(Location l in pieces )
+			ICollection<Location> moves = k.getMoves (b, this);
+
+
+			//Check to see if King is in check at current location
+			bool check = inCheck (b, colour);
+
+			foreach(Location l in moves )
 			{
-				MoveType mt = k.canMove (b, this, l);
+				
+				Piece p = b.movePiece (new Move(k.Location, l));
+
+				check = inCheck (b, colour);
+
+				if(!check)
+				{
+					return false;
+				}
+
+				//Move King back
+				k.Location = kingLocation;
+				p.Location = l;
+				b.setPiece (k);
+				b.setPiece (p);
 
 			}
-			return false;
+
+			//What is the king is the only piece??
+
+			return check;
+
 		}
 
 		public bool inCheck(Board b, int colour )
 		{
+
 			Piece k = null;
 
 			string c = "";
@@ -98,14 +117,18 @@ namespace Chess
 				k = KingBlack;
 			}
 			
-			Console.WriteLine (k.Location);
+			//Console.WriteLine (k.Location);
 
 			ICollection<Piece> pieces = b.getPlayersPieces (c);
 
 			foreach(Piece p in pieces)
 			{
-				Console.Write (p + " ");
-				Console.WriteLine (p.canMove(b, this, k.Location));
+				//Console.Write (p + " ");
+				MoveType mt = p.canMove(b, this, k.Location);
+				if(mt == MoveType.NORMAL)
+				{
+					return true;
+				}
 			}
 
 			return false;

@@ -5,7 +5,7 @@ namespace Chess
 	public class ChessGame : Game
 	{
 		
-		public ChessGame (Board board, Player o, Player t, Rules rules) : base(board,o,t, rules)
+		public ChessGame (Board board, Player o, Player t, Rules rules) : base(board, o, t, rules)
 		{
 
 		}
@@ -22,14 +22,18 @@ namespace Chess
 			MoveType mt = board.getPiece (move.From).canMove (board, rules, move.To);
 
 			//Move piece and update board
-			if (mt == MoveType.NORMAL) {
+			if (mt == MoveType.INVALID) {
 				board.movePiece (move);
 				drawBoard ();
 				playerTurn++;
 				playerTurn %= 2;
 				sendMessage ("Player " + (playerTurn + 1) + " it's your turn");
-			} else if (mt == MoveType.CASTLE) {
-				//Do castle stuff
+			} 
+			else if (mt == MoveType.CASTLE) {
+				if(rules.validMove (this.board, move))
+				{
+					
+				}
 			} 
 			else
 			{

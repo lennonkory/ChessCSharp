@@ -10,6 +10,11 @@ namespace Chess
 		public readonly string colour;
 		private string name;
 
+		public int Moves {
+			get;
+			set;
+		}
+
 		public string Symbol {
 			get;set;
 		}
@@ -29,18 +34,21 @@ namespace Chess
 		{
 			this.colour = c;
 			this.location = new Location (l);
+			Moves = 0;
 		}
 
 		public Piece (Location l)
 		{
 			this.colour = "none";
 			this.location = new Location (l);
+			Moves = 0;
 		}
 
 		public Piece (Piece p)
 		{
 			this.colour = p.colour;
 			this.location = new Location (p.location);
+			Moves = p.Moves;
 		}
 
 		public abstract ICollection<Location> getMoves (Board board, Rules rules);
