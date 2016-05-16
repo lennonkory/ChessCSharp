@@ -10,12 +10,14 @@ namespace Chess
 			this.Name = "Bishop";
 
 			if (c.Equals ("white")) {
-				Symbol = "\u2657";
+                //Symbol = "\u2657";
+                Symbol = "B";
 			} 
 			else 
 			{
-				Symbol = "\u265D";
-			}
+                //Symbol = "\u265D";
+                Symbol = "b";
+            }
 		}
 
 		private void addToList(Board board, int x, int y, int xDirection, int yDirection, ICollection<Location> list)

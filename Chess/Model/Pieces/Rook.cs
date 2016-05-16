@@ -10,11 +10,13 @@ namespace Chess
 			this.Name = "Rook";
 			if (c.Equals ("white")) {
 				Symbol = "\u2656";
-			} 
+                Symbol = "R";
+            } 
 			else 
 			{
 				Symbol = "\u265C";
-			}
+                Symbol = "r";
+            }
 		}
 
 		public override ICollection<Location> getMoves (Board board, Rules rules)

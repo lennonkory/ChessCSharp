@@ -11,12 +11,14 @@ namespace Chess
 			this.Name = "King";
 
 			if (c.Equals ("white")) {
-				Symbol = "\u2654";
-			} 
+				//Symbol = "\u2654";
+                Symbol = "K";
+            } 
 			else 
 			{
-				Symbol = "\u265A";
-			}
+				//Symbol = "\u265A";
+                Symbol = "k";
+            }
 
 		}
 

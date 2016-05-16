@@ -10,12 +10,14 @@ namespace Chess
 			this.Name = "Knight";
 
 			if (c.Equals ("white")) {
-				Symbol = "\u2658";
-			} 
+                //Symbol = "\u2658";
+                Symbol = "N";
+            } 
 			else 
 			{
-				Symbol = "\u265E";
-			}
+				//Symbol = "\u265E";
+                Symbol = "n";
+            }
 		}
 
 		public override ICollection<Location> getMoves (Board board, Rules rules)

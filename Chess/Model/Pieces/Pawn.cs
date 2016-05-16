@@ -15,12 +15,14 @@ namespace Chess
 			this.Name = "Pawn";
 
 			if (c.Equals ("white")) {
-				Symbol = "\u2659";
-			} 
+                //Symbol = "\u2659";
+                Symbol = "P";
+            } 
 			else 
 			{
-				Symbol = "\u265F";
-			}
+				//Symbol = "\u265F";
+                Symbol = "p";
+            }
 
 		}
 

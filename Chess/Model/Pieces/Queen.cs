@@ -14,12 +14,14 @@ namespace Chess
 			this.Name = "Queen";
 
 			if (c.Equals ("white")) {
-				Symbol = "\u2655";
-			} 
+                //Symbol = "\u2655";
+                Symbol = "Q";
+            } 
 			else 
 			{
-				Symbol = "\u265B";
-			}
+				//Symbol = "\u265B";
+                Symbol = "q";
+            }
 
 			rook = new Rook (this.colour, this.Location);
 			bishop = new Bishop (this.colour, this.Location);
