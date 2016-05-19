@@ -1,17 +1,36 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chess", "Chess\Chess.csproj", "{33CB469F-0301-4FBF-BA85-0636A3CF7603}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessTest", "ChessTest\ChessTest.csproj", "{4EB9F29F-5003-40B4-BCA4-78CF56036A9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33CB469F-0301-4FBF-BA85-0636A3CF7603}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{33CB469F-0301-4FBF-BA85-0636A3CF7603}.Debug|x86.ActiveCfg = Debug|x86
 		{33CB469F-0301-4FBF-BA85-0636A3CF7603}.Debug|x86.Build.0 = Debug|x86
+		{33CB469F-0301-4FBF-BA85-0636A3CF7603}.Release|Any CPU.ActiveCfg = Release|x86
 		{33CB469F-0301-4FBF-BA85-0636A3CF7603}.Release|x86.ActiveCfg = Release|x86
 		{33CB469F-0301-4FBF-BA85-0636A3CF7603}.Release|x86.Build.0 = Release|x86
+		{4EB9F29F-5003-40B4-BCA4-78CF56036A9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EB9F29F-5003-40B4-BCA4-78CF56036A9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EB9F29F-5003-40B4-BCA4-78CF56036A9E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4EB9F29F-5003-40B4-BCA4-78CF56036A9E}.Debug|x86.Build.0 = Debug|Any CPU
+		{4EB9F29F-5003-40B4-BCA4-78CF56036A9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EB9F29F-5003-40B4-BCA4-78CF56036A9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EB9F29F-5003-40B4-BCA4-78CF56036A9E}.Release|x86.ActiveCfg = Release|Any CPU
+		{4EB9F29F-5003-40B4-BCA4-78CF56036A9E}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

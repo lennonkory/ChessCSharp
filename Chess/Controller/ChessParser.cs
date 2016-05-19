@@ -123,6 +123,7 @@ namespace Chess
 			int x = ConvertToInt(one);
 			int y = int.Parse (two.ToString());
 
+            y = 8 - y;
 
 			if(Location.IsValid(x,y))
 			{

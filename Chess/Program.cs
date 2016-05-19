@@ -57,40 +57,7 @@ namespace Chess
 		public static void Main (string[] args)
 		{
 
-
-            using (SqlConnection con = new SqlConnection("Data Source=KORY-PC;Integrated Security=True"))
-            {
-                //
-                // Open the SqlConnection.
-                //
-                con.Open();
-                //
-                // The following code uses an SqlCommand based on the SqlConnection.
-                //
-                using (SqlCommand command = new SqlCommand("SELECT * FROM Cat", con))
-
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        Console.WriteLine("{0} {1} {2}",
-                        reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
-                    }
-                }
-
-                using (SqlCommand command = new SqlCommand("SELECT name FROM Cat Where name = 'Snack'", con))
-
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        Console.WriteLine("{0} {1} {2}",
-                        reader.GetString(0),2,3);
-                    }
-                }
-            }
-
-            Console.ReadLine();
+            Play();
 		
 		}
 	}

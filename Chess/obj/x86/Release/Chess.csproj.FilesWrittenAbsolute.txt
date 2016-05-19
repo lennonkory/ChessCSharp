@@ -1,5 +1,0 @@
-/Users/kory/Projects/Chess/Chess/obj/x86/Release/.NETFramework,Version=v4.5.AssemblyAttribute.cs
-/Users/kory/Projects/Chess/Chess/bin/Release/Chess.exe.mdb
-/Users/kory/Projects/Chess/Chess/bin/Release/Chess.exe
-/Users/kory/Projects/Chess/Chess/obj/x86/Release/Chess.exe
-/Users/kory/Projects/Chess/Chess/obj/x86/Release/Chess.exe.mdb

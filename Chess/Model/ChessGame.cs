@@ -10,19 +10,23 @@ namespace Chess
 
 		}
 
-		public override TurnType Turn(Move move)//should return ENUM if invalid (ie why is it invalid)
+		public override TurnType Turn(Move move)
 		{
 
-			if(this.board.GetPieceColourInt(move.From) != playerTurn )//Not players Turn
+            Console.WriteLine(move);
+
+            if (this.board.GetPieceColourInt(move.From) != playerTurn )//Not players Turn
 			{
+               
+                Console.WriteLine("{0} {1}",this.board.GetPieceColourInt(move.From),playerTurn);
 				SendMessage ("Player " + (playerTurn + 1) +" it's not your Turn");
 				return TurnType.NOT_PLAYERS_TURN;
 			}
 
 			MoveType mt = board.GetPiece (move.From).CanMove (board, rules, move.To);
-
+            Console.WriteLine(mt);
 			//Move piece and update board
-			if (mt == MoveType.INVALID) {
+			if (mt == MoveType.NORMAL) {
 				board.MovePiece (move);
 				DrawBoard ();
 				playerTurn++;

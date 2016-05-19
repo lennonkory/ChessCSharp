@@ -1,0 +1,9 @@
+C:\Users\Kory\Documents\Code\ChessNoMerge\ChessCSharp\ChessTest\obj\Debug\ChessTest.csprojResolveAssemblyReference.cache
+C:\Users\Kory\Documents\Code\ChessNoMerge\ChessCSharp\ChessTest\bin\Debug\ChessTest.dll
+C:\Users\Kory\Documents\Code\ChessNoMerge\ChessCSharp\ChessTest\bin\Debug\ChessTest.pdb
+C:\Users\Kory\Documents\Code\ChessNoMerge\ChessCSharp\ChessTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Kory\Documents\Code\ChessNoMerge\ChessCSharp\ChessTest\obj\Debug\ChessTest.dll
+C:\Users\Kory\Documents\Code\ChessNoMerge\ChessCSharp\ChessTest\obj\Debug\ChessTest.pdb
+C:\Users\Kory\Documents\Code\ChessNoMerge\ChessCSharp\ChessTest\bin\Debug\Chess.exe
+C:\Users\Kory\Documents\Code\ChessNoMerge\ChessCSharp\ChessTest\bin\Debug\Chess.pdb
+C:\Users\Kory\Documents\Code\ChessNoMerge\ChessCSharp\ChessTest\bin\Debug\Chess.xml
