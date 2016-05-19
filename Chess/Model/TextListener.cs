@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Chess
 {
-	public class TextListener : ViewListener
+	public class TextListener : IViewListener
 	{
 		private View view;
 
@@ -11,23 +11,23 @@ namespace Chess
 			this.view = v;
 		}
 		
-		public void sendMessage(string message){
-			this.view.showMessage (message);
+		public void SendMessage(string message){
+			this.view.ShowMessage (message);
 		}
 
-		public void updateTurn(int turn){
+		public void UpdateTurn(int turn){
 			//Console.WriteLine ();
 		}
 
-		public void updateBoard(Board board)
+		public void UpdateBoard(Board board)
 		{
-			this.view.drawBoard (board);
+			this.view.DrawBoard (board);
 		}
 
 
-		public void showMoves(Board board, ICollection<Location> moves)
+		public void ShowMoves(Board board, ICollection<Location> moves)
 		{
-			this.view.showMoves (board, moves);
+			this.view.ShowMoves (board, moves);
 		}
 	}
 }

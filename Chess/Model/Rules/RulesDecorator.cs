@@ -11,20 +11,20 @@ namespace Chess
 			this.rules = r;
 		}
 
-		public override void setBoard(Board b)
+		public override void SetBoard(Board b)
 		{
-			rules.setBoard (b);
+			rules.SetBoard (b);
 		}
 
-		public override bool gameOver (Board b)
+		public override bool GameOver (Board b)
 		{
-			rules.gameOver (b);
+			rules.GameOver (b);
 			return false;
 		}
 
-		public override bool validMove(Board board, Move move)
+		public override bool ValidMove(Board board, Move move)
 		{
-			bool check = this.rules.validMove (board, move);
+			bool check = this.rules.ValidMove (board, move);
 			Console.WriteLine ("Rules Decorator");
 			return check;
 		}

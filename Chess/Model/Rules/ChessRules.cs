@@ -3,33 +3,52 @@ using System.Collections.Generic;
 
 namespace Chess
 {
+    /// <summary>
+    /// Chess rules that must be followed.
+    /// </summary>
 	public class ChessRules : Rules
 	{
+        /// <summary>
+        /// Where the white king is. Used to speed up searching for kings.
+        /// </summary>
 		public Piece KingWhite {
 			get;
 			set;
 		}
 
+        /// <summary>
+        /// Where the black king is. Used to speed up searching for kings.
+        /// </summary>
 		public Piece KingBlack {
 			get;
 			set;
 		}
 		
+        /// <summary>
+        /// 
+        /// </summary>
 		public ChessRules ()
 		{
 
 		}
 
-		public override void setBoard(Board board)
+        /// <summary>
+        /// Sets the location of the kings. If rules maintains the location of the kings
+        /// it does not need to search for the king each time inCheck is called (which is every move).
+        /// </summary>
+        /// <param name="board">The current board.</param>
+        /// <see cref="Board"/>
+		public override void SetBoard(Board board)
 		{
-			Piece p = board.findPieceByNameAndColour ("King", "white");
+			Piece p = board.FindPieceByNameAndColour ("King", "white");
 			Console.WriteLine ("KING: " + p.Location.ToString());
+
 			if (p != null)
 			{
 				KingWhite = p;
 			}
 
-			p = board.findPieceByNameAndColour ("King", "black");
+			p = board.FindPieceByNameAndColour ("King", "black");
 			if (p != null)
 			{
 				KingBlack = p;
@@ -37,18 +56,31 @@ namespace Chess
 
 		}
 
-		public override bool gameOver(Board b)
+        /// <summary>
+        /// Checks if the game is over.
+        /// </summary>
+        /// <param name="b">The current board.</param>
+        /// <returns>true if game is over, false if not</returns>
+        /// <see cref="Board"/>
+		public override bool GameOver(Board b)
 		{
 			checkmate (b, 0);
 			return false;
 		}
 
-		public override bool validMove(Board board, Move move)
+        /// <summary>
+        /// Checks if a move is valid or not
+        /// </summary>
+        /// <param name="board"></param>
+        /// <param name="move"></param>
+        /// <returns></returns>
+		public override bool ValidMove(Board board, Move move)
 		{
 			Console.WriteLine ("Chess rules");
 
 			return true;
 		}
+
 		//Public only for testing
 		public bool checkmate(Board b, int colour)
 		{
@@ -67,7 +99,7 @@ namespace Chess
 
 			Location kingLocation = new Location(k.Location);
 
-			ICollection<Location> moves = k.getMoves (b, this);
+			ICollection<Location> moves = k.GetMoves (b, this);
 
 
 			//Check to see if King is in check at current location
@@ -76,7 +108,7 @@ namespace Chess
 			foreach(Location l in moves )
 			{
 				
-				Piece p = b.movePiece (new Move(k.Location, l));
+				Piece p = b.MovePiece (new Move(k.Location, l));
 
 				check = inCheck (b, colour);
 
@@ -88,8 +120,8 @@ namespace Chess
 				//Move King back
 				k.Location = kingLocation;
 				p.Location = l;
-				b.setPiece (k);
-				b.setPiece (p);
+				b.SetPiece (k);
+				b.SetPiece (p);
 
 			}
 
@@ -119,12 +151,12 @@ namespace Chess
 			
 			//Console.WriteLine (k.Location);
 
-			ICollection<Piece> pieces = b.getPlayersPieces (c);
+			ICollection<Piece> pieces = b.GetPlayersPieces (c);
 
 			foreach(Piece p in pieces)
 			{
 				//Console.Write (p + " ");
-				MoveType mt = p.canMove(b, this, k.Location);
+				MoveType mt = p.CanMove(b, this, k.Location);
 				if(mt == MoveType.NORMAL)
 				{
 					return true;

@@ -2,9 +2,9 @@
 
 namespace Chess
 {
-	public interface CommandListener
+	public interface ICommandListener
 	{
-		void sendMessage();
+		void SendMessage();
 	}
 }
 

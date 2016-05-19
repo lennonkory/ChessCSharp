@@ -17,16 +17,16 @@ namespace Chess
 			this.colour = colour;
 		}
 
-		public void removePiece(Piece p){
+		public void RemovePiece(Piece p){
 			pieces.Remove (p);
 		}
 
-		public void addPiece(Piece p)
+		public void AddPiece(Piece p)
 		{
 			pieces.Add (p);
 		}
 
-		public abstract void input ();
+		public abstract void Input ();
 
 	}
 }

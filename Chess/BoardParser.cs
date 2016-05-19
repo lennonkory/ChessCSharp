@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace Chess
 {
-	public interface BoardParser
+	public interface IBoardParser
 	{
 
-		ICollection<Piece> parseBoard (string fileName);
+		ICollection<Piece> ParseBoard (string fileName);
 
 
 	}

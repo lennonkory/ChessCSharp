@@ -3,3 +3,6 @@ C:\Users\Kory\Documents\Code\ChessNoMerge\ChessCSharp\Chess\bin\Debug\Chess.exe
 C:\Users\Kory\Documents\Code\ChessNoMerge\ChessCSharp\Chess\bin\Debug\Chess.pdb
 C:\Users\Kory\Documents\Code\ChessNoMerge\ChessCSharp\Chess\obj\x86\Debug\Chess.csprojResolveAssemblyReference.cache
 C:\Users\Kory\Documents\Code\ChessNoMerge\ChessCSharp\Chess\obj\x86\Debug\Chess.pdb
+C:\Users\Kory\Documents\Code\ChessNoMerge\ChessCSharp\Chess\bin\Debug\Chess.XML
+C:\Users\Kory\Documents\Code\ChessNoMerge\ChessCSharp\Chess\bin\Debug\Chess.exe.config
+C:\Users\Kory\Documents\Code\ChessNoMerge\ChessCSharp\Chess\bin\Debug\System.dll

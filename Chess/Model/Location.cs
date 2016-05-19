@@ -2,6 +2,12 @@
 
 namespace Chess
 {
+    /// <summary>
+    /// Information about where a piece is on a board.
+    /// A board is a 2D array of squares. Location has two main
+    /// variables X and Y. X for column and Y for row.
+    /// Example X = 0 and Y = 0 is the top left corner of the board.
+    /// </summary>
 	public class Location
 	{
 		private int xcord;
@@ -9,39 +15,63 @@ namespace Chess
 		private int sideIndex = 0;
 		private char bottomIndex = ' ';
 
+        /// <summary>
+        /// The x coordinate (column).
+        /// </summary>
 		public int Xcord
 		{
 			get { return this.xcord;}
 		}
 
+        /// <summary>
+        /// The y coordinate (row)
+        /// </summary>
 		public int Ycord
 		{
 			get { return this.ycord;}
 		}
 
-
+        /// <summary>
+        /// Creates a new location given
+        /// X (column) and Y (row) points.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
 		public Location(int x, int y){
 			this.xcord = x;
 			this.ycord = y;
 		}
 
+        /// <summary>
+        /// Copy constructor.
+        /// </summary>
+        /// <param name="l"></param>
 		public Location(Location l){
 			this.xcord = l.Xcord;
 			this.ycord = l.ycord;
 		}
 
-		//Create validations for x and y;
-		public void setLocation(int x, int y){
+		/// <summary>
+        /// Sets new location.
+        /// </summary>
+        /// <remarks>VALIDATE THIS</remarks>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+		public void SetLocation(int x, int y){
 			this.xcord = x;
 			this.ycord = y;
 		}
 
-		public void setLocation(Location l){
+        /// <summary>
+        /// Sets a new location.
+        /// </summary>
+        /// <param name="l">The new location</param>
+		public void SetLocation(Location l){
 			this.xcord = l.xcord;
 			this.ycord = l.ycord;
 		}
 
-		private void setIndex()
+		private void SetIndex()
 		{
 			sideIndex = 8 - ycord;
 
@@ -75,13 +105,22 @@ namespace Chess
 
 		}
 
+        /// <summary>
+        /// ToString method.
+        /// </summary>
+        /// <returns></returns>
 		public override string ToString ()
 		{
-			setIndex ();
+			SetIndex ();
 			return "X: " + this.Xcord + "("+bottomIndex +")" + " Y: " + this.Ycord + "("+sideIndex +")";
 		}
 
-		public bool isValid()
+        /// <summary>
+        /// Tests if a location is valid.
+        /// </summary>
+        /// <remarks>It maybe best to not allow the creation of a location if its not valid.</remarks>
+        /// <returns>True if valid false if not.</returns>
+		public bool IsValid()
 		{
 			if((xcord > 8 || xcord < 0) || (ycord > 8 || ycord < 0) )
 			{
@@ -90,7 +129,13 @@ namespace Chess
 			return true;
 		}
 
-		public static bool isValid(int x, int y){
+        /// <summary>
+        /// Tests if a location is valid.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns>True if valid false if not.</returns>
+		public static bool IsValid(int x, int y){
 			if(x > 7 || x < 0 || y > 7 || y < 0 )
 			{
 				return false;

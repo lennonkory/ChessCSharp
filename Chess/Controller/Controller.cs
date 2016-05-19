@@ -2,38 +2,54 @@
 
 namespace Chess
 {
+    /// <summary>
+    /// Controller for Chess/Checkers game.
+    /// </summary>
 	public class Controller
 	{
+
 		private View view;
 		private Game game;
-		private InputParser ip;
+		private IInputParser ip;
 
+        /// <summary>
+        /// Creates a new Controller object.
+        /// </summary>
+        /// <param name="view">The view the users wish to use. (Text or GUI)</param>
+        /// <param name="game">The type of Game the users wish to play.</param>
 		public Controller (View view, Game game)
 		{
 			this.view = view;
 			this.game = game;
 			this.ip = new ChessParser ();
 
-			game.setViewListener (new TextListener(this.view));
+			game.SetViewListener (new TextListener(this.view));
 
 		}
 
-		public void start()
+        /// <summary>
+        /// Initializes game and view objects.
+        /// </summary>
+		public void Start()
 		{
-			game.start ();
-			view.start ();
+			game.Start ();
+			view.Start ();
 
 		}
 
-		public void play(string command)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="command"></param>
+		public void Play(string command)
 		{
 			Console.WriteLine ("Play");
 
-			InputType parse = ip.parseInput (command);
+			InputType parse = ip.ParseInput (command);
 
 			if(parse == InputType.INVALID)
 			{
-				view.showMessage ("Invalid command: " + command);
+				view.ShowMessage ("Invalid command: " + command);
 			}
 			else if(parse == InputType.LIST)
 			{
@@ -41,8 +57,8 @@ namespace Chess
 			}
 			else
 			{
-				Move move = ip.createMove (command);
-				this.game.turn (move);
+				Move move = ip.CreateMove (command);
+				this.game.Turn (move);
 			}
 
 		}

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace Chess
 {
-	public interface ViewListener
+	public interface IViewListener
 	{
-		void sendMessage(string message);
-		void updateTurn (int turn);
-		void updateBoard(Board board);
-		void showMoves(Board board, ICollection<Location> moves);
+		void SendMessage(string message);
+		void UpdateTurn (int turn);
+		void UpdateBoard(Board board);
+		void ShowMoves(Board board, ICollection<Location> moves);
 	}
 }
 

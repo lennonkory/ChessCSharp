@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace Chess
 {
-	public class SetUpChessBoard : SetUpBoard
+    /// <summary>
+    /// Sets up a chess board.
+    /// </summary>
+	public class SetUpChessBoard : ISetUpBoard
 	{
-		public SetUpChessBoard ()
-		{
-		}
 
-		public Square[,] setUpBoard(ICollection<Piece> pieces)
+		public Square[,] SetUpBoard(ICollection<Piece> pieces)
 		{
 			Square[,] s = new Square[8, 8];
 
@@ -32,7 +32,7 @@ namespace Chess
 			return s;
 		}
 
-		public Square[,] setUpBoard()
+		public Square[,] SetUpBoard()
 		{
 			Square[,] s = new Square[8, 8];
 

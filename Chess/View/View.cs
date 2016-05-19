@@ -5,17 +5,17 @@ namespace Chess
 {
 	public abstract class View
 	{
-		public CommandListener cl;
-		
-		public View ()
-		{
-		}
 
-		public abstract void showMessage(string message);
-		public abstract void drawBoard( Board board);
-		public abstract void showMoves(Board board, ICollection<Location> locations);
-		public abstract void start ();
-		public void setCommandListener(CommandListener cl)
+		protected ICommandListener cl;
+		
+		public View (){}
+
+		public abstract void ShowMessage(string message);
+		public abstract void DrawBoard( Board board);
+		public abstract void ShowMoves(Board board, ICollection<Location> locations);
+		public abstract void Start ();
+
+		public void SetCommandListener(ICommandListener cl)
 		{
 			this.cl = cl;
 		}

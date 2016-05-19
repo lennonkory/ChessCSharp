@@ -9,17 +9,17 @@ namespace Chess
 		{
 		}
 
-		public override bool gameOver(Board b)
+		public override bool GameOver(Board b)
 		{
-			base.gameOver (b);
+			base.GameOver (b);
 			Console.WriteLine ("Rules Decorator Castle");
 			return false;
 		}
 
 		private bool checkMoves(Board b, Move m, int x)
 		{
-			int k = b.getPiece (m.From).Moves;
-			int r = b.getPiece (x, m.From.Ycord).Moves;
+			int k = b.GetPiece (m.From).Moves;
+			int r = b.GetPiece (x, m.From.Ycord).Moves;
 
 			return (k == r && r == 0);
 
@@ -46,7 +46,7 @@ namespace Chess
 				return false;
 			}
 
-			string c = board.getPieceColour (move.From);
+			string c = board.GetPieceColour (move.From);
 
 			if (c.Equals ("white")) {
 				c = "black";
@@ -56,13 +56,13 @@ namespace Chess
 				c = "white";
 			}
 
-			ICollection<Piece> pieces = board.getPlayersPieces (c);
+			ICollection<Piece> pieces = board.GetPlayersPieces (c);
 
 			foreach(Piece p in pieces)
 			{
 				kingX += kingDirection;
 
-				MoveType mt = p.canMove(board, this, new Location(kingX, move.To.Ycord));
+				MoveType mt = p.CanMove(board, this, new Location(kingX, move.To.Ycord));
 
 				if(mt == MoveType.NORMAL)
 				{
@@ -70,7 +70,7 @@ namespace Chess
 				}
 
 				kingX += kingDirection;
-				mt = p.canMove(board, this, new Location(kingX, move.To.Ycord));
+				mt = p.CanMove(board, this, new Location(kingX, move.To.Ycord));
 
 				if(mt == MoveType.NORMAL)
 				{
@@ -84,10 +84,10 @@ namespace Chess
 		}
 
 
-		public override bool validMove(Board board, Move move)
+		public override bool ValidMove(Board board, Move move)
 		{
 			
-			base.validMove (board, move);
+			base.ValidMove (board, move);
 
 			if (move.Type == MoveType.CASTLE) {
 				this.castle (board, move);

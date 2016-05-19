@@ -29,17 +29,17 @@ namespace Chess
 
 				//Console.WriteLine ("X:{0} Y:{1}",x,y);
 
-				if (!Location.isValid (x, y)) 
+				if (!Location.IsValid (x, y)) 
 				{
 					return;
 				}
 
-				if(board.isEnemy(this.colour, x,y)){
+				if(board.IsEnemy(this.colour, x,y)){
 					list.Add (new Location(x,y));
 					return;
 				}
 
-				if(!board.isEmpty(x,y))
+				if(!board.IsEmpty(x,y))
 				{
 					return;
 				}
@@ -49,7 +49,7 @@ namespace Chess
 			}
 		}
 
-		public override ICollection<Location> getMoves (Board board, Rules rules)
+		public override ICollection<Location> GetMoves (Board board, Rules rules)
 		{
 			ICollection<Location> list = new List<Location>();
 
@@ -64,12 +64,12 @@ namespace Chess
 			return list;
 		}
 
-		public override MoveType canMove (Board board, Rules rules, Location to)
+		public override MoveType CanMove (Board board, Rules rules, Location to)
 		{
 			MoveType mt = MoveType.INVALID;
 
 			//Check if players own place in the location they are trying to move
-			if (playerPieceOnLocation(board, to))
+			if (PlayerPieceOnLocation(board, to))
 			{
 				return MoveType.INVALID;
 			}
@@ -103,7 +103,7 @@ namespace Chess
 
 				//Console.WriteLine ("X:{0} Y:{1}",x,y);
 
-				if (!Location.isValid (x, y)) 
+				if (!Location.IsValid (x, y)) 
 				{
 					return MoveType.INVALID;
 				}
@@ -112,7 +112,7 @@ namespace Chess
 					return MoveType.NORMAL;
 				}
 			
-				if(!board.isEmpty(x,y))
+				if(!board.IsEmpty(x,y))
 				{
 			
 					return MoveType.INVALID;

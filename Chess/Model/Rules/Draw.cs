@@ -8,14 +8,14 @@ namespace Chess
 		{
 		}
 
-		public override bool gameOver(Board b)
+		public override bool GameOver(Board b)
 		{
-			base.gameOver (b);
+			base.GameOver (b);
 			Console.WriteLine ("Rules Decorator Draw");
 			return false;
 		}
 
-		public override bool validMove(Board board, Move move)
+		public override bool ValidMove(Board board, Move move)
 		{
 			return true;
 		}

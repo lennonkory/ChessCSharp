@@ -27,7 +27,7 @@ namespace Chess
 		}
 
 		//NEED TO CHECK ALL Y AND X FOR GOING OFF BOARD
-		public override ICollection<Location> getMoves (Board board, Rules rules)
+		public override ICollection<Location> GetMoves (Board board, Rules rules)
 		{
 			ICollection<Location> list = new List<Location> ();
 
@@ -49,7 +49,7 @@ namespace Chess
 				
 				Location to = new Location (x,y);
 
-				if (board.isEmpty(to))
+				if (board.IsEmpty(to))
 				{
 					list.Add (to);
 				}
@@ -67,7 +67,7 @@ namespace Chess
 			if(y < 8 && y >= 0){
 				Location to = new Location (x,y);
 
-				if (board.isEmpty(to) && this.firstMove)
+				if (board.IsEmpty(to) && this.firstMove)
 				{
 					list.Add (to);
 				}
@@ -84,7 +84,7 @@ namespace Chess
 
 				Location to = new Location (x,y);
 
-				if (board.isEnemy(this.colour, to))
+				if (board.IsEnemy(this.colour, to))
 				{
 					list.Add (to);
 				}
@@ -98,7 +98,7 @@ namespace Chess
 
 				Location to = new Location (x,y);
 
-				if (board.isEnemy(this.colour, to))
+				if (board.IsEnemy(this.colour, to))
 				{
 					list.Add (to);
 				}
@@ -109,13 +109,13 @@ namespace Chess
 
 		}
 
-		public override MoveType canMove (Board board, Rules rules, Location to)
+		public override MoveType CanMove (Board board, Rules rules, Location to)
 		{
 
 			MoveType mt = MoveType.INVALID;
 
 
-			if (playerPieceOnLocation(board, to))
+			if (PlayerPieceOnLocation(board, to))
 			{
 				return MoveType.INVALID;
 			}
@@ -144,7 +144,7 @@ namespace Chess
 			}
 
 			//Attacking
-			if (board.isEnemy (this.colour, to)) {//Check if OPP piece is there/ Will need to change for weird pawn rule.
+			if (board.IsEnemy (this.colour, to)) {//Check if OPP piece is there/ Will need to change for weird pawn rule.
 				if ((this.Location.Xcord - 1 == to.Xcord) || (this.Location.Xcord + 1 == to.Xcord)) {
 					if (this.colour.Equals ("white")) {
 						if (this.Location.Ycord - 1 == to.Ycord) {

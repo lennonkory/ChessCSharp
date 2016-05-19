@@ -13,12 +13,12 @@ namespace Chess
 		}
 
 		//SHOULD this return an empty list?
-		public override ICollection<Location> getMoves (Board board, Rules rules)
+		public override ICollection<Location> GetMoves (Board board, Rules rules)
 		{
 			return null;
 		}
 
-		public override MoveType canMove (Board board, Rules rules, Location to)
+		public override MoveType CanMove (Board board, Rules rules, Location to)
 		{
 			return MoveType.INVALID;
 		}

@@ -8,7 +8,7 @@ namespace Chess
 		{
 		}
 
-		public override void input (){}
+		public override void Input (){}
 
 	}
 }

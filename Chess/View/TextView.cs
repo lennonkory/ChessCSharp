@@ -9,14 +9,14 @@ namespace Chess
 		{
 		}
 
-		public override void drawBoard( Board board )
+		public override void DrawBoard( Board board )
 		{
 			for(int y = 0; y < 8; y++)
 			{
 				Console.Write (8 - y + " ");
 				for(int x = 0; x < 8; x++)
 				{
-					Piece p = board.getPiece (x, y);
+					Piece p = board.GetPiece (x, y);
 					Console.Write ("[" + p.Symbol + "]");
 				}
 				Console.WriteLine ();
@@ -24,12 +24,12 @@ namespace Chess
 			Console.WriteLine ("   A  B  C  D  E  F  G  H");
 		}
 
-		public override void showMessage(string message)
+		public override void ShowMessage(string message)
 		{
 			Console.WriteLine (message);
 		}
 
-		public override void showMoves(Board board, ICollection<Location> locations){
+		public override void ShowMoves(Board board, ICollection<Location> locations){
 
 			string [,]b = new string[8,8];
 
@@ -37,7 +37,7 @@ namespace Chess
 			{
 				for(int x = 0; x < 8; x++)
 				{
-					Piece p = board.getPiece (x,y);
+					Piece p = board.GetPiece (x,y);
 					b[y,x]= "[" + p.Symbol + "]";
 				}
 
@@ -57,9 +57,9 @@ namespace Chess
 			}
 		}
 
-		public override void start()
+		public override void Start()
 		{
-			this.cl.sendMessage ();
+			this.cl.SendMessage ();
 		}
 
 	}

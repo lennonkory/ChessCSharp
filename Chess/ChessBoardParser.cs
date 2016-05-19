@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace Chess
 {
-	public class ChessBoardParser : BoardParser
+	public class ChessBoardParser : IBoardParser
 	{
-		private Piece createPiece(char p, int x, int y)
+		private Piece CreatePiece(char p, int x, int y)
 		{
 			switch (p) 
 			{
@@ -43,7 +43,7 @@ namespace Chess
 			return null;
 		}
 
-		public ICollection<Piece> parseBoard (string fileName)
+		public ICollection<Piece> ParseBoard (string fileName)
 		{
 
 			ICollection<Piece> pieces = new List<Piece> ();
@@ -63,7 +63,7 @@ namespace Chess
 				
 				foreach(char c in i)
 				{
-					Piece p = createPiece (c,x,y);
+					Piece p = CreatePiece (c,x,y);
 					pieces.Add (p);
 					x++;
 				}

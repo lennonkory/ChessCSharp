@@ -1,0 +1,635 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Chess</name>
+    </assembly>
+    <members>
+        <member name="T:Chess.PieceDecorator">
+            <summary>
+            Used for adding functionality to a piece.
+            </summary>
+        </member>
+        <member name="M:Chess.PieceDecorator.#ctor(Chess.Piece)">
+            <summary>
+            Constructor to create decorator.
+            </summary>
+            <param name="p">The piece to decorate.</param>
+        </member>
+        <member name="M:Chess.PieceDecorator.CanMove(Chess.Board,Chess.Rules,Chess.Location)">
+            <summary>
+            <see cref="M:Chess.Piece.CanMove(Chess.Board,Chess.Rules,Chess.Location)"/>
+            </summary>
+            <param name="board"></param>
+            <param name="rules"></param>
+            <param name="to"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Chess.PieceDecorator.GetMoves(Chess.Board,Chess.Rules)">
+            <summary>
+            <see cref="M:Chess.Piece.GetMoves(Chess.Board,Chess.Rules)"/>
+            </summary>
+            <param name="board"></param>
+            <param name="rules"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Chess.MainClass.test(Chess.Board,Chess.Move)">
+            <summary>
+            Used to Test functionallity above unit testing.
+            </summary>
+            <param name="b"></param>
+            <param name="m"></param>
+        </member>
+        <member name="M:Chess.MainClass.Play">
+            <summary>
+            Sets up a chess game. This functionality will be replace with a Factory pattern.
+            </summary>
+        </member>
+        <member name="M:Chess.MainClass.Main(System.String[])">
+            <summary>
+            Main starting point of program.
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="T:Chess.Board">
+            <summary>
+            Board class. Controls all aspects of the board including adding and removing pieces
+            and returning information about squares and pieces.
+            <remarks>
+            Validation of location and x y positions need to be done.
+            void returns should return bool(or status enum) for success and failure
+            </remarks>
+            </summary>
+        </member>
+        <member name="M:Chess.Board.#ctor">
+            <summary>
+            Creates a new standard Board. At pieces are Empty.
+            This should be used for testing.
+            </summary>
+        </member>
+        <member name="M:Chess.Board.#ctor(Chess.ISetUpBoard)">
+            <summary>
+            Sets up a board and adds pieces to it.
+            Generally this is how a Board would be called in production mode.
+            </summary>
+            <param name="sb">Definded interface which controls what pieces go on the board.</param>
+        </member>
+        <member name="M:Chess.Board.#ctor(Chess.ISetUpBoard,System.Collections.Generic.ICollection{Chess.Piece})">
+            <summary>
+            Sets up the board using the ISetUpBoard interface and Selected pieces.
+            </summary>
+            <param name="sb"></param>
+            <param name="pieces"></param>
+        </member>
+        <member name="M:Chess.Board.GetPieceColour(Chess.Location)">
+            <summary>
+            Returns the colour of a piece given a location.
+            The location is square in which the piece is on.
+            </summary>
+            <param name="l">The Location of the piece.</param>
+            <returns>The colour ofthe piece.</returns>
+        </member>
+        <member name="M:Chess.Board.IsEnemy(System.String,Chess.Location)">
+            <summary>
+            Checks to see if a Square contains an Enemy piece.
+            </summary>
+            <param name="colour">The players colour</param>
+            <param name="l">The location of the square the player wants to check.</param>
+            <returns>True if enemy false if players colour or empty.</returns>
+        </member>
+        <member name="M:Chess.Board.IsEnemy(System.String,System.Int32,System.Int32)">
+            <summary>
+            Checks to see if a Square contains an Enemy piece using x and y coordinates.
+            </summary>
+            <param name="colour">The players colour</param>
+            <param name="x">The X (column) position of the square to check.</param>
+            <param name="y">The Y (row) position of the square to check.</param>
+            <returns>True if enemy false if players colour or empty.</returns>
+        </member>
+        <member name="M:Chess.Board.IsEmpty(Chess.Location)">
+            <summary>
+            Checks if the square is empty.
+            </summary>
+            <param name="to">The square to check.</param>
+            <returns>True if empty false if a piece is on the square.</returns>
+        </member>
+        <member name="M:Chess.Board.IsEmpty(System.Int32,System.Int32)">
+            <summary>
+            Checks if the square is empty.
+            </summary>
+            <param name="x">The X (column) position of the square to check.</param>
+            <param name="y">The Y (row) position of the square to check.</param>
+            <returns>True if empty false if a piece is on the square.</returns>
+        </member>
+        <member name="M:Chess.Board.PrintBoard">
+            <summary>
+            Prints the squares of the board. Only used for testing.
+            </summary>
+        </member>
+        <member name="M:Chess.Board.GetSquare(System.Int32,System.Int32)">
+            <summary>
+            Returns a square based on its location.
+            </summary>
+            <param name="x">The X (column) position of the square.</param>
+            <param name="y">The Y (row) position of the square.</param>
+            <returns>A square.</returns>
+        </member>
+        <member name="M:Chess.Board.GetPiece(Chess.Location)">
+            <summary>
+            Returns a piece given a location.
+            </summary>
+            <param name="l">The location of the piece.</param>
+            <returns>A piece</returns>
+        </member>
+        <member name="M:Chess.Board.GetPiece(System.Int32,System.Int32)">
+            <summary>
+            Returns a piece given a location.
+            </summary>
+            <param name="x">The X (column) position of the piece.</param>
+            <param name="y">The Y (row) position of the piece</param>
+            <returns>A piece.</returns>
+        </member>
+        <member name="M:Chess.Board.SetPiece(Chess.Piece)">
+            <summary>
+            Sets a piece.
+            <remarks>
+            There is no need to pass in a location as
+            a piece contains its own location.
+            The location of the piece MUST be set.
+            </remarks>
+            </summary>
+            <param name="p">The piece to set.</param>
+        </member>
+        <member name="M:Chess.Board.MovePiece(Chess.Move)">
+            <summary>
+            Moves a piece from one square to another.
+            All nessacary updates will be made in this method.
+            <remarks>This method assumes that the move is valid.
+            No validation for Move is done in this method.
+            </remarks>
+            </summary>
+            <param name="move"></param>
+            <returns>Returns piece that was cpatured.</returns>
+        </member>
+        <member name="M:Chess.Board.GetPieceColourInt(Chess.Location)">
+            <summary>
+            Returns an integer value of the colour of a piece.
+            0 = white.
+            1 = black.
+            -1 = Empty.
+            </summary>
+            <param name="l">Location of the piece.</param>
+            <returns>integer representation of colour.</returns>
+        </member>
+        <member name="M:Chess.Board.GetPieceName(Chess.Location)">
+            <summary>
+            Returns the name of a piece.
+            </summary>
+            <param name="location">Location of the piece on the board.</param>
+            <returns>The name of the piece.</returns>
+        </member>
+        <member name="M:Chess.Board.GetPieceName(System.Int32,System.Int32)">
+            <summary>
+            Returns the name of a piece.
+            </summary>
+            <param name="x">The X (column) position of the piece.</param>
+            <param name="y">The Y (row) position of the piece.</param>
+            <returns>The name of the piece.</returns>
+        </member>
+        <member name="M:Chess.Board.GetPlayersPieces(System.String)">
+            <summary>
+            Returns all the pieces that belong to a player.
+            </summary>
+            <remarks>Can spped this up by having a list of pieces for each player</remarks>
+            <param name="colour">The players colour.</param>
+            <returns>Collection of pieces.</returns>
+        </member>
+        <member name="T:Chess.Square">
+            <summary>
+            A board is made up of squares. A suqare has a Colour and a piece.
+            </summary>
+            <remarks>Colour of a square is not the same as the colour of a piece.</remarks>
+        </member>
+        <member name="F:Chess.Square.Colour">
+            <summary>
+            The colour of the square.
+            </summary>
+        </member>
+        <member name="M:Chess.Square.#ctor(System.String,Chess.Piece)">
+            <summary>
+            Creates a new square.
+            </summary>
+            <param name="colour">The colour of the square.</param>
+            <param name="p"></param>
+        </member>
+        <member name="T:Chess.Location">
+            <summary>
+            Information about where a piece is on a board.
+            A board is a 2D array of squares. Location has two main
+            variables X and Y. X for column and Y for row.
+            Example X = 0 and Y = 0 is the top left corner of the board.
+            </summary>
+        </member>
+        <member name="P:Chess.Location.Xcord">
+            <summary>
+            The x coordinate (column).
+            </summary>
+        </member>
+        <member name="P:Chess.Location.Ycord">
+            <summary>
+            The y coordinate (row)
+            </summary>
+        </member>
+        <member name="M:Chess.Location.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Creates a new location given
+            X (column) and Y (row) points.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+        </member>
+        <member name="M:Chess.Location.#ctor(Chess.Location)">
+            <summary>
+            Copy constructor.
+            </summary>
+            <param name="l"></param>
+        </member>
+        <member name="M:Chess.Location.SetLocation(System.Int32,System.Int32)">
+            <summary>
+            Sets new location.
+            </summary>
+            <remarks>VALIDATE THIS</remarks>
+            <param name="x"></param>
+            <param name="y"></param>
+        </member>
+        <member name="M:Chess.Location.SetLocation(Chess.Location)">
+            <summary>
+            Sets a new location.
+            </summary>
+            <param name="l">The new location</param>
+        </member>
+        <member name="M:Chess.Location.ToString">
+            <summary>
+            ToString method.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Chess.Location.IsValid">
+            <summary>
+            Tests if a location is valid.
+            </summary>
+            <remarks>It maybe best to not allow the creation of a location if its not valid.</remarks>
+            <returns>True if valid false if not.</returns>
+        </member>
+        <member name="M:Chess.Location.IsValid(System.Int32,System.Int32)">
+            <summary>
+            Tests if a location is valid.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns>True if valid false if not.</returns>
+        </member>
+        <member name="T:Chess.Piece">
+            <summary>
+            Contains all information and actions need to use a piece. This is an
+            abstract class for chess pieces or checkers pieces.
+            </summary>
+        </member>
+        <member name="F:Chess.Piece.colour">
+            <summary>
+            The colour ofthe piece.
+            </summary>
+        </member>
+        <member name="P:Chess.Piece.Moves">
+            <summary>
+            The number of moves the piece has made.
+            <remarks>This can be used for castling and certain draw rules.</remarks>
+            </summary>
+        </member>
+        <member name="P:Chess.Piece.Symbol">
+            <summary>
+            The symbol of the piece.
+            <remarks>The goal was (and this is) to use unicode chess chars
+            for the symbol. However the command prompt for windows doesn't support it.</remarks>
+            </summary>
+        </member>
+        <member name="P:Chess.Piece.Name">
+            <summary>
+            The name of the piece.
+            </summary>
+        </member>
+        <member name="P:Chess.Piece.Location">
+            <summary>
+            The lcoation of the piece.
+            Where it is on the board.
+            <see cref="P:Chess.Piece.Location"/>
+            </summary>
+        </member>
+        <member name="M:Chess.Piece.#ctor(System.String,Chess.Location)">
+            <summary>
+            Constructor to create a piece.
+            </summary>
+            <param name="c">The colour of the piece.</param>
+            <param name="l">The piece's lcoation on the board.</param>
+            <see cref="P:Chess.Piece.Location"/>
+        </member>
+        <member name="M:Chess.Piece.#ctor(Chess.Location)">
+            <summary>
+            Constructor to create an Empty piece.
+            </summary>
+            <param name="l">The piece's lcoation on the board.</param>
+        </member>
+        <member name="M:Chess.Piece.#ctor(Chess.Piece)">
+            <summary>
+            Copy constructor.
+            </summary>
+            <param name="p">The piece to copy.</param>
+        </member>
+        <member name="M:Chess.Piece.GetMoves(Chess.Board,Chess.Rules)">
+            <summary>
+            Returns a list of all possible moves that piece can make.
+            <remarks>As of May 19 this returns moves the piece can mark reqardless of other factors. Ie 
+            It is illegal to move a piece if it places your king in check, however this will return that move as valid.
+            The rules object will need to be used to check or illegal moves.
+            </remarks>
+            </summary>
+            <param name="board">The board the piece is on.</param>
+            <param name="rules">The rules that govern the game.</param>
+            <see cref="T:Chess.Board"/>
+            <see cref="T:Chess.Rules"/>
+            <returns>Collection of possible moves.</returns>
+        </member>
+        <member name="M:Chess.Piece.CanMove(Chess.Board,Chess.Rules,Chess.Location)">
+            <summary>
+            Validates if a piece can be moved to a certain location.
+            </summary>
+            <remarks>As of May 19 this returns moves the piece can mark reqardless of other factors. Ie 
+            It is illegal to move a piece if it places your king in check, however this will return that move as valid.
+            The rules object will need to be used to check or illegal moves.
+            </remarks>
+            <param name="board">The board the piece is on.</param>
+            <param name="rules">The rules that govern the game.</param>
+            <param name="to">Where the piece wants to move.</param>
+            <see cref="T:Chess.Board"/>
+            <see cref="T:Chess.Rules"/>
+            <see cref="P:Chess.Piece.Location"/>
+            <see cref="T:Chess.MoveType"/>
+            <returns>Returns Movetype (type of move the player is trying to make).</returns>
+        </member>
+        <member name="M:Chess.Piece.PlayerPieceOnLocation(Chess.Board,Chess.Location)">
+            <summary>
+            Checks in a players piece is on a certain location.
+            </summary>
+            <remarks>Used to speed up checking for valid moves.
+            There is no point checking if a move is valid if the
+            player is trying to move onto a square where he or she already
+            has a piece.
+            </remarks>
+            <param name="b">The board the piece is on.</param>
+            <param name="to">Location to check</param>
+            <returns>True if the location contains a piece that is the players colour false otherwise.</returns>
+        </member>
+        <member name="M:Chess.Piece.ToString">
+            <summary>
+            ToString method
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Chess.Move">
+            <summary>
+            This class contains information about a move a
+            player wants to make.
+            Its main properties are To and From.
+            To is where the player wants to move their piece to.
+            From is where the player wnats to move their piece from.
+            </summary>
+            <see cref="T:Chess.Location"/>
+        </member>
+        <member name="P:Chess.Move.Type">
+            <summary>
+            The type of move
+            maybe used for castling. UPDATE THIS.
+            </summary>
+        </member>
+        <member name="P:Chess.Move.To">
+            <summary>
+            Where on the board the piece is going.
+            </summary>
+        </member>
+        <member name="P:Chess.Move.From">
+            <summary>
+            Where the piece is coming from.
+            </summary>
+        </member>
+        <member name="M:Chess.Move.#ctor(Chess.Location,Chess.Location)">
+            <summary>
+            Creates a new Move.
+            </summary>
+            <param name="f"></param>
+            <param name="t"></param>
+        </member>
+        <member name="M:Chess.Move.ToString">
+            <summary>
+            ToString.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Chess.ISetUpBoard">
+            <summary>
+            Sets up a board for playing. Adds pieces to the board.
+            </summary>
+        </member>
+        <member name="M:Chess.ISetUpBoard.SetUpBoard(System.Collections.Generic.ICollection{Chess.Piece})">
+            <summary>
+            Given a set of pieces this method places them into the correct squares (squares are part of a board).
+            All squares that so not a a piece associated with this will have empty pieces placed on them.
+            </summary>
+            <param name="pieces">The pieces to be placed on the board.</param>
+            <returns>An array of squares.</returns>
+        </member>
+        <member name="M:Chess.ISetUpBoard.SetUpBoard">
+            <summary>
+            Creates a standard starting Board.
+            </summary>
+            <returns>An array of squares.</returns>
+        </member>
+        <member name="T:Chess.SetUpChessBoard">
+            <summary>
+            Sets up a chess board.
+            </summary>
+        </member>
+        <member name="T:Chess.Controller">
+            <summary>
+            Controller for Chess/Checkers game.
+            </summary>
+        </member>
+        <member name="M:Chess.Controller.#ctor(Chess.View,Chess.Game)">
+            <summary>
+            Creates a new Controller object.
+            </summary>
+            <param name="view">The view the users wish to use. (Text or GUI)</param>
+            <param name="game">The type of Game the users wish to play.</param>
+        </member>
+        <member name="M:Chess.Controller.Start">
+            <summary>
+            Initializes game and view objects.
+            </summary>
+        </member>
+        <member name="M:Chess.Controller.Play(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="command"></param>
+        </member>
+        <member name="T:Chess.IInputParser">
+            <summary>
+            Interface for IInputParse.
+            <remarks>Used to parse input from a user.</remarks>
+            </summary>
+        </member>
+        <member name="M:Chess.IInputParser.ParseInput(System.String)">
+            <summary>
+            Takes in user input as a string and parses that string.
+            </summary>
+            <remarks>The user will enter in their command. There are two types of commands:
+            The user can try to move a piece from one square to another or the user can request to see a list
+            of possible moves a piece can make.
+            Note that this parse only gets that the structure of the command is correct not if the move
+            itself are valid.
+            </remarks>
+            <param name="input">The string that the user entered</param>
+            <returns>InputType. INVALID: The move requested is not a valid move
+            LIST: The user is asking to see a list of moves their selected piece can make.
+            MOVE: The user wishes to make a move.
+            </returns>
+        </member>
+        <member name="M:Chess.IInputParser.CreateMove(System.String)">
+            <summary>
+            Creates a move based on an input string.
+            </summary>
+            <remarks>It is important to note that this method assumes that the input string is
+            valid. Therefore it is important that a call to this function only be
+            made AFTER pasreInput as been called and the caller varifies the move is
+            in correct format.</remarks>
+            <param name="input">String contains the move the user wishes to make.</param>
+            <returns>The Move the player wishes to make. Moves consist of a Location from and a Location to.</returns>
+        </member>
+        <member name="M:Chess.IInputParser.CreateLocation(System.String)">
+            <summary>
+            Creates a Location object.
+            </summary>
+            <remarks>The Location is the piece that the user wants to view all possible moves from.
+            CreateLocation assume that the string is in proper form. ParseInput should be called
+            and varified before this method is called.
+            </remarks>
+            <param name="input">string containing the Location of the piece.</param>
+            <returns>Location object.</returns>
+        </member>
+        <member name="T:Chess.ChessParser">
+            <summary>
+            Used for parsing board files to create a board for chess.
+            </summary>
+        </member>
+        <member name="M:Chess.ChessParser.ParseInput(System.String)">
+            <summary>
+            Input structure for Move: FROM:TO
+            EXAMPLE: A5:A6
+            Input structure for List: Location
+            EXAMPLE: A5
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Chess.ChessParser.CreateMove(System.String)">
+            <summary>
+            Input structure: FROM:TO
+            EXAMPLE: A5:A6
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Chess.ChessParser.CreateLocation(System.String)">
+            <summary>
+            Input structure: Location
+            Example: A5
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Chess.Game">
+            <summary>
+            Abstract class that controls the game being played.
+            Can be used with Chess or Checkers.
+            </summary>
+            <remarks>
+            There are protected variables that maybe set to private in the future.
+            Player is not used at (as of May 19) all yet but will be in the future.
+            </remarks>
+        </member>
+        <member name="F:Chess.Game.board">
+            <summary>
+            The board thats being used.
+            </summary>
+        </member>
+        <member name="F:Chess.Game.playerTurn">
+            <summary>
+            Which players turn it is.
+            </summary>
+        </member>
+        <member name="F:Chess.Game.rules">
+            <summary>
+            The rules that the game will follow.
+            </summary>
+        </member>
+        <member name="M:Chess.Game.#ctor(Chess.Board,Chess.Player,Chess.Player,Chess.Rules)">
+            <summary>
+            Creates a new Game.
+            </summary>
+            <param name="board">The board to use.</param>
+            <param name="o">Player one</param>
+            <param name="t">Player two</param>
+            <param name="r">The rules to use.</param>
+            <see cref="T:Chess.Board"/>
+            <see cref="T:Chess.Player"/>
+            <see cref="T:Chess.Rules"/>
+        </member>
+        <member name="M:Chess.Game.Start">
+            <summary>
+            Starts a new game.
+            </summary>
+        </member>
+        <member name="M:Chess.Game.SetViewListener(Chess.IViewListener)">
+            <summary>
+            Sets the view listener so the Game (model) can update the view.
+            </summary>
+            <param name="vl"></param>
+        </member>
+        <member name="M:Chess.Game.DrawBoard">
+            <summary>
+            Set this to private after testing.
+            </summary>
+        </member>
+        <member name="M:Chess.Game.Turn(Chess.Move)">
+            <summary>
+            Controls a players turn. A player will request that
+            a move be made. If the move is succuessful the board and player turn
+            will be updated, if not the player will be requested to make another move.
+            </summary>
+            <param name="move">The move the player wishes to make.</param>
+            <returns>TurnType (if the move was successful or why it failed)</returns>
+            <see cref="T:Chess.Move"/>
+            <see cref="T:Chess.TurnType"/>
+        </member>
+        <member name="M:Chess.Game.SendMessage(System.String)">
+            <summary>
+            Sends a message to the view. Maybe private.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Chess.Game.Test(Chess.Move)">
+            <summary>
+            REMOVE
+            </summary>
+            <param name="m"></param>
+        </member>
+    </members>
+</doc>

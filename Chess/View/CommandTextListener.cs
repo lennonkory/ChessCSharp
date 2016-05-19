@@ -2,16 +2,17 @@
 
 namespace Chess
 {
-	public class CommandTextListener : CommandListener
+	public class CommandTextListener : ICommandListener
 	{
-		Controller controller;
+
+        private Controller controller;
 		
 		public CommandTextListener (Controller c)
 		{
 			this.controller = c;
 		}
 
-		public void sendMessage()
+		public void SendMessage()
 		{
 			while (true) 
 			{
@@ -21,7 +22,7 @@ namespace Chess
 				{
 					break;
 				}
-				this.controller.play (message);
+				this.controller.Play (message);
 			}
 		}
 

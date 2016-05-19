@@ -28,28 +28,28 @@ namespace Chess
 
 		}
 
-		public override ICollection<Location> getMoves (Board board, Rules rules)
+		public override ICollection<Location> GetMoves (Board board, Rules rules)
 		{
 
 			List<Location> list = new List<Location>();
 			rook.Location = this.Location;
 			bishop.Location = this.Location;
 
-			list.AddRange (rook.getMoves(board, rules));
-			list.AddRange (bishop.getMoves(board, rules));
+			list.AddRange (rook.GetMoves(board, rules));
+			list.AddRange (bishop.GetMoves(board, rules));
 
 			return list;
 
 		}
 
-		public override MoveType canMove (Board board, Rules rules, Location to)
+		public override MoveType CanMove (Board board, Rules rules, Location to)
 		{
 			//Set location
 			rook.Location = this.Location;
-			if (rook.canMove (board, rules, to) == MoveType.INVALID)
+			if (rook.CanMove (board, rules, to) == MoveType.INVALID)
 			{
 				bishop.Location = this.Location;
-				return bishop.canMove (board, rules, to);
+				return bishop.CanMove (board, rules, to);
 			}
 				return MoveType.NORMAL;
 		}

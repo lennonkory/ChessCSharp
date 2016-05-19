@@ -19,7 +19,7 @@ namespace Chess
             }
 		}
 
-		public override ICollection<Location> getMoves (Board board, Rules rules)
+		public override ICollection<Location> GetMoves (Board board, Rules rules)
 		{
 
 			ICollection<Location> list = new List<Location> ();
@@ -42,9 +42,9 @@ namespace Chess
 
 					if (x > 7) {
 						right = false;
-					} else if (board.isEmpty (x, y)) {
+					} else if (board.IsEmpty (x, y)) {
 						list.Add (new Location (x, y));
-					} else if (board.isEnemy (this.colour, x, y)) {
+					} else if (board.IsEnemy (this.colour, x, y)) {
 						list.Add (new Location (x, y));
 						right = false;
 					} else 
@@ -61,9 +61,9 @@ namespace Chess
 
 					if (x < 0) {
 						left = false;
-					} else if (board.isEmpty (x, y)) {
+					} else if (board.IsEmpty (x, y)) {
 						list.Add (new Location (x, y));
-					} else if (board.isEnemy (this.colour, x, y)) {
+					} else if (board.IsEnemy (this.colour, x, y)) {
 						list.Add (new Location (x, y));
 						left = false;
 					} else
@@ -79,9 +79,9 @@ namespace Chess
 
 					if (y > 7) {
 						up = false;
-					} else if (board.isEmpty (x, y)) {
+					} else if (board.IsEmpty (x, y)) {
 						list.Add (new Location (x, y));
-					} else if (board.isEnemy (this.colour, x, y)) {
+					} else if (board.IsEnemy (this.colour, x, y)) {
 						list.Add (new Location (x, y));
 						up = false;
 					} 
@@ -99,9 +99,9 @@ namespace Chess
 
 					if (y < 0) {
 						down = false;
-					} else if (board.isEmpty (x, y)) {
+					} else if (board.IsEmpty (x, y)) {
 						list.Add (new Location (x, y));
-					} else if (board.isEnemy (this.colour, x, y)) {
+					} else if (board.IsEnemy (this.colour, x, y)) {
 						list.Add (new Location (x, y));
 						down = false;
 					}
@@ -116,10 +116,10 @@ namespace Chess
 			return list;
 		}
 
-		public override MoveType canMove (Board board, Rules rules, Location to)
+		public override MoveType CanMove (Board board, Rules rules, Location to)
 		{
 			//Check if players own place in the location they are trying to move
-			if (playerPieceOnLocation(board, to))
+			if (PlayerPieceOnLocation(board, to))
 			{
 				return MoveType.INVALID;
 			}
@@ -153,7 +153,7 @@ namespace Chess
 					{
 						return MoveType.NORMAL;
 					}
-					if(!board.isEmpty(from.Xcord, index)) // Piece can not move through other pieces
+					if(!board.IsEmpty(from.Xcord, index)) // Piece can not move through other pieces
 					{
 						return MoveType.INVALID;
 					}
@@ -182,7 +182,7 @@ namespace Chess
 						return MoveType.NORMAL;
 					}
 
-					if(!board.isEmpty(index, from.Ycord)) // Piece can not move through other pieces
+					if(!board.IsEmpty(index, from.Ycord)) // Piece can not move through other pieces
 					{
 						return MoveType.INVALID;
 					}

@@ -10,34 +10,34 @@ namespace Chess
 
 		}
 
-		public override TurnType turn(Move move)//should return ENUM if invalid (ie why is it invalid)
+		public override TurnType Turn(Move move)//should return ENUM if invalid (ie why is it invalid)
 		{
 
-			if(this.board.getPieceColourInt(move.From) != playerTurn )//Not players turn
+			if(this.board.GetPieceColourInt(move.From) != playerTurn )//Not players Turn
 			{
-				sendMessage ("Player " + (playerTurn + 1) +" it's not your turn");
+				SendMessage ("Player " + (playerTurn + 1) +" it's not your Turn");
 				return TurnType.NOT_PLAYERS_TURN;
 			}
 
-			MoveType mt = board.getPiece (move.From).canMove (board, rules, move.To);
+			MoveType mt = board.GetPiece (move.From).CanMove (board, rules, move.To);
 
 			//Move piece and update board
 			if (mt == MoveType.INVALID) {
-				board.movePiece (move);
-				drawBoard ();
+				board.MovePiece (move);
+				DrawBoard ();
 				playerTurn++;
 				playerTurn %= 2;
-				sendMessage ("Player " + (playerTurn + 1) + " it's your turn");
+				SendMessage ("Player " + (playerTurn + 1) + " it's your Turn");
 			} 
 			else if (mt == MoveType.CASTLE) {
-				if(rules.validMove (this.board, move))
+				if(rules.ValidMove (this.board, move))
 				{
 					
 				}
 			} 
 			else
 			{
-				sendMessage ("Invalid move player " + (playerTurn + 1));
+				SendMessage ("Invalid move player " + (playerTurn + 1));
 			}
 
 			return TurnType.VALID;

@@ -20,7 +20,7 @@ namespace Chess
             }
 		}
 
-		public override ICollection<Location> getMoves (Board board, Rules rules)
+		public override ICollection<Location> GetMoves (Board board, Rules rules)
 		{
 			ICollection<Location> list = new List<Location>();
 
@@ -34,8 +34,8 @@ namespace Chess
 
 			Location to = new Location (x,y);
 
-			if(to.isValid()){
-				if (!playerPieceOnLocation(board, to))
+			if(to.IsValid()){
+				if (!PlayerPieceOnLocation(board, to))
 				{
 					list.Add(to);
 				}
@@ -44,8 +44,8 @@ namespace Chess
 			y = this.Location.Ycord - 2;
 			to = new Location (x,y);
 
-			if(to.isValid()){
-				if (!playerPieceOnLocation(board, to))
+			if(to.IsValid()){
+				if (!PlayerPieceOnLocation(board, to))
 				{
 					list.Add(to);
 				}
@@ -56,8 +56,8 @@ namespace Chess
 
 			to = new Location (x,y);
 
-			if(to.isValid()){
-				if (!playerPieceOnLocation(board, to))
+			if(to.IsValid()){
+				if (!PlayerPieceOnLocation(board, to))
 				{
 					list.Add(to);
 				}
@@ -67,8 +67,8 @@ namespace Chess
 
 			to = new Location (x,y);
 
-			if(to.isValid()){
-				if (!playerPieceOnLocation(board, to))
+			if(to.IsValid()){
+				if (!PlayerPieceOnLocation(board, to))
 				{
 					list.Add(to);
 				}
@@ -80,8 +80,8 @@ namespace Chess
 
 			to = new Location (x,y);
 
-			if(to.isValid()){
-				if (!playerPieceOnLocation(board, to))
+			if(to.IsValid()){
+				if (!PlayerPieceOnLocation(board, to))
 				{
 					list.Add(to);
 				}
@@ -91,8 +91,8 @@ namespace Chess
 
 			to = new Location (x,y);
 
-			if(to.isValid()){
-				if (!playerPieceOnLocation(board, to))
+			if(to.IsValid()){
+				if (!PlayerPieceOnLocation(board, to))
 				{
 					list.Add(to);
 				}
@@ -103,8 +103,8 @@ namespace Chess
 
 			to = new Location (x,y);
 
-			if(to.isValid()){
-				if (!playerPieceOnLocation(board, to))
+			if(to.IsValid()){
+				if (!PlayerPieceOnLocation(board, to))
 				{
 					list.Add(to);
 				}
@@ -114,8 +114,8 @@ namespace Chess
 
 			to = new Location (x,y);
 
-			if(to.isValid()){
-				if (!playerPieceOnLocation(board, to))
+			if(to.IsValid()){
+				if (!PlayerPieceOnLocation(board, to))
 				{
 					list.Add(to);
 				}
@@ -126,12 +126,12 @@ namespace Chess
 			return list;
 		}
 
-		public override MoveType canMove (Board board, Rules rules, Location to)
+		public override MoveType CanMove (Board board, Rules rules, Location to)
 		{
 			MoveType mt = MoveType.INVALID;
 
 			//Check if players own place in the location they are trying to move
-			if (playerPieceOnLocation(board, to))
+			if (PlayerPieceOnLocation(board, to))
 			{
 				return MoveType.INVALID;
 			}
