@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Chess.View;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace Chess
 {
@@ -9,56 +12,57 @@ namespace Chess
         /// <summary>
         /// Used to Test functionallity above unit testing.
         /// </summary>
-        /// <param name="b"></param>
-        /// <param name="m"></param>
-		public static void test(Board b, Move m)
+		public static void test()
 		{
+            ICollection<Piece> pieces = new ChessBoardParser().ParseBoard("C:\\Users\\Kory\\Documents\\Code\\ChessNoMerge\\ChessCSharp\\Chess\\boards\\foolmate.txt");
 
-			b.MovePiece (m);
+            Board board = new Board(new SetUpChessBoard(), pieces);
+            Rules rules = new ChessRules();
+            rules.SetBoard(board);
+            bool over = rules.GameOver(board, 1);
 
-			if (m.To.Xcord - m.From.Xcord > 0) {//Castling right
-				b.MovePiece (new Move (new Location (7, m.To.Ycord), new Location (5, m.To.Ycord)));
-			}
-			else 
-			{
-				b.MovePiece (new Move (new Location (0, m.To.Ycord), new Location (3, m.To.Ycord)));
-			}
-
-		}
+            Console.WriteLine(over);
+            Console.ReadLine();
+        }
 
         /// <summary>
         /// Sets up a chess game. This functionality will be replace with a Factory pattern.
         /// </summary>
-		public static void Play()
+		public static void Play(Gui gui)
 		{
-			IBoardParser bp = new ChessBoardParser ();
-			string boardName = "board2.txt";
+            
+            IBoardParser bp = new ChessBoardParser ();
+			string boardName = "board1.txt";
 			ICollection<Piece> pieces = bp.ParseBoard ("../../boards/"+boardName);
 
-			Board b = new Board (new SetUpChessBoard(), pieces);
-			View v = new TextView ();
+            Board b = new Board (new SetUpChessBoard(), pieces);
+            PlayerView v = new GuiView (gui);
 
 			Rules r = new ChessRules ();
+            r.SetBoard(b);
 
 			Game g = new ChessGame (b, null, null, r);
 
 			Controller c = new Controller (v,g);
 
 			v.SetCommandListener (new CommandTextListener(c));
-
-			c.Start ();
+      
+            c.Start ();
 
 		}
-		
-        /// <summary>
-        /// Main starting point of program.
-        /// </summary>
-        /// <param name="args"></param>
-		public static void Main (string[] args)
-		{
 
-            Play();
-		
-		}
-	}
+        [STAThread]
+        static void Main()
+        {
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Gui g = new Gui();
+            Play(g);
+            Application.Run(g);
+            
+           // test();
+            
+        }
+    }
 }

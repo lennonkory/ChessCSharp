@@ -114,7 +114,6 @@ namespace Chess
 
 			MoveType mt = MoveType.INVALID;
 
-
 			if (PlayerPieceOnLocation(board, to))
 			{
 				return MoveType.INVALID;

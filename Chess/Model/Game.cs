@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace Chess
 {
@@ -57,9 +59,10 @@ namespace Chess
         /// </summary>
 		public void Start()
 		{
-			playerTurn = 0;
+            playerTurn = 0;
 			SendMessage ("Player " + (playerTurn + 1) +" it's your Turn");
-			DrawBoard ();
+            this.vl.SetBoard(board.Squares);
+            
 		}
 
         /// <summary>
@@ -74,9 +77,9 @@ namespace Chess
         /// <summary>
         /// Set this to private after testing.
         /// </summary>
-		protected void DrawBoard()
+		protected void DrawBoard(Move move, Piece p)
 		{
-			this.vl.UpdateBoard (this.board);
+			this.vl.UpdateBoard (move, p);
 		}
 
         /// <summary>
@@ -105,8 +108,40 @@ namespace Chess
         /// <param name="m"></param>
 		public void Test(Move m)
 		{
-			this.rules.ValidMove(this.board,m);
+			this.rules.ValidMove(this.board,m,0);
 		}
+
+        public void ListMoves(Location location)
+        {
+            Debug.WriteLine("Loc: "+location);
+            Piece p = board.GetPiece(location);
+            this.vl.ShowMoves(p.GetMoves(board, rules));
+        }
+
+        public string GetStringPieces()
+        {
+            Square[,] s = board.Squares;
+            string list = "";
+
+            for (int y = 0; y < 8; y++)
+            {
+                for (int x = 0; x < 8; x++)
+                {
+                    string sym = s[y, x].GetPiece().Symbol;
+
+                    if (sym.Equals(" ")) {
+                        sym = "e";
+                    }
+
+                    list += sym;
+                }
+                list += "\n";
+            }
+
+            return list;
+
+        }
+
 	}
 }
 

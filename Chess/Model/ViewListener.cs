@@ -7,8 +7,9 @@ namespace Chess
 	{
 		void SendMessage(string message);
 		void UpdateTurn (int turn);
-		void UpdateBoard(Board board);
-		void ShowMoves(Board board, ICollection<Location> moves);
+		void UpdateBoard(Move move, Piece p);
+        void SetBoard(Square[,] squares);
+        void ShowMoves(ICollection<Location> moves);
 	}
 }
 

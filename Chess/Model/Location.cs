@@ -122,7 +122,7 @@ namespace Chess
         /// <returns>True if valid false if not.</returns>
 		public bool IsValid()
 		{
-			if((xcord > 8 || xcord < 0) || (ycord > 8 || ycord < 0) )
+			if((xcord > 7 || xcord < 0) || (ycord > 7 || ycord < 0) )
 			{
 				return false;
 			}

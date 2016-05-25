@@ -13,28 +13,48 @@ namespace Chess
 		public override TurnType Turn(Move move)
 		{
 
-            Console.WriteLine(move);
-
             if (this.board.GetPieceColourInt(move.From) != playerTurn )//Not players Turn
 			{
-               
-                Console.WriteLine("{0} {1}",this.board.GetPieceColourInt(move.From),playerTurn);
 				SendMessage ("Player " + (playerTurn + 1) +" it's not your Turn");
 				return TurnType.NOT_PLAYERS_TURN;
 			}
 
 			MoveType mt = board.GetPiece (move.From).CanMove (board, rules, move.To);
+
             Console.WriteLine(mt);
-			//Move piece and update board
+
+			//Move piece and updates board
 			if (mt == MoveType.NORMAL) {
-				board.MovePiece (move);
-				DrawBoard ();
-				playerTurn++;
-				playerTurn %= 2;
-				SendMessage ("Player " + (playerTurn + 1) + " it's your Turn");
+
+                Piece p = board.MovePiece (move);
+
+                if (rules.ValidMove(board, move, playerTurn))
+                {
+                    DrawBoard(move, p);
+                    //Check for game over.
+                    
+                    playerTurn++;
+                    playerTurn %= 2;
+
+                    if (rules.GameOver(board, playerTurn))
+                    {
+                        SendMessage("GameOver!!");
+                        return TurnType.VALID;
+                    }
+
+                    SendMessage("Player " + (playerTurn + 1) + " it's your Turn");
+
+                }
+                else {
+                    //Add better message
+                    //GetErrorMessage method would be a good idea
+                    board.UndoLastMove();
+                    SendMessage("Invalid move player " + (playerTurn + 1) + " in check");
+                }
+				
 			} 
 			else if (mt == MoveType.CASTLE) {
-				if(rules.ValidMove (this.board, move))
+				if(rules.ValidMove (this.board, move, playerTurn))
 				{
 					
 				}

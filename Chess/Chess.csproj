@@ -56,6 +56,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Pieces\KingCastle.cs" />
@@ -78,6 +81,22 @@
     <Compile Include="Model\Pieces\Rook.cs" />
     <Compile Include="Model\Pieces\Bishop.cs" />
     <Compile Include="Model\Pieces\Knight.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="View\CommandGuiListener.cs" />
+    <Compile Include="View\Gui.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Gui.Designer.cs">
+      <DependentUpon>Gui.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GuiView.cs" />
+    <Compile Include="View\PieceBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="View\View.cs" />
     <Compile Include="View\TextView.cs" />
     <Compile Include="Controller\Controller.cs" />
@@ -117,5 +136,39 @@
     <None Include="app.config" />
     <None Include="boards\board1.txt" />
     <None Include="boards\board2.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Gui.resx">
+      <DependentUpon>Gui.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\chessBoard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\chess_piece_king.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\bqueen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\wbishop.png" />
+    <None Include="Properties\bbishop.png" />
+    <None Include="Properties\bking.png" />
+    <None Include="Properties\bknight.png" />
+    <None Include="Properties\bpawn.png" />
+    <None Include="Properties\brook.png" />
+    <Content Include="Properties\wking.png" />
+    <None Include="Properties\wrook.png" />
+    <None Include="Properties\wpawn.png" />
+    <None Include="Properties\wknight.png" />
+    <Content Include="Properties\wqueen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="saves\" />
   </ItemGroup>
 </Project>

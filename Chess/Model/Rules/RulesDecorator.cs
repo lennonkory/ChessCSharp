@@ -16,15 +16,15 @@ namespace Chess
 			rules.SetBoard (b);
 		}
 
-		public override bool GameOver (Board b)
+		public override bool GameOver (Board b, int colour)
 		{
-			rules.GameOver (b);
+			rules.GameOver (b, colour);
 			return false;
 		}
 
-		public override bool ValidMove(Board board, Move move)
+		public override bool ValidMove(Board board, Move move, int colour)
 		{
-			bool check = this.rules.ValidMove (board, move);
+			bool check = this.rules.ValidMove (board, move, colour);
 			Console.WriteLine ("Rules Decorator");
 			return check;
 		}

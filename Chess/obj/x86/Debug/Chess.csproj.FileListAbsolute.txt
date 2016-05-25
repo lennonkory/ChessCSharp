@@ -5,3 +5,7 @@ C:\Users\Kory\Documents\Code\ChessNoMerge\ChessCSharp\Chess\bin\Debug\Chess.pdb
 C:\Users\Kory\Documents\Code\ChessNoMerge\ChessCSharp\Chess\bin\Debug\System.dll
 C:\Users\Kory\Documents\Code\ChessNoMerge\ChessCSharp\Chess\obj\x86\Debug\Chess.exe
 C:\Users\Kory\Documents\Code\ChessNoMerge\ChessCSharp\Chess\obj\x86\Debug\Chess.pdb
+C:\Users\Kory\Documents\Code\ChessNoMerge\ChessCSharp\Chess\obj\x86\Debug\Chess.csprojResolveAssemblyReference.cache
+C:\Users\Kory\Documents\Code\ChessNoMerge\ChessCSharp\Chess\obj\x86\Debug\Chess.Properties.Resources.resources
+C:\Users\Kory\Documents\Code\ChessNoMerge\ChessCSharp\Chess\obj\x86\Debug\Chess.View.Gui.resources
+C:\Users\Kory\Documents\Code\ChessNoMerge\ChessCSharp\Chess\obj\x86\Debug\Chess.csproj.GenerateResource.Cache

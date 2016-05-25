@@ -15,7 +15,11 @@ namespace Chess
 	{
 
         private Square [,] squares;
-		
+        private Piece last;
+        private Move reverseLastMove;
+
+        public Square[,] Squares { get { return squares; } }
+
         /// <summary>
         /// Creates a new standard Board. At pieces are Empty.
         /// This should be used for testing.
@@ -68,7 +72,17 @@ namespace Chess
         /// <param name="l">The Location of the piece.</param>
         /// <returns>The colour ofthe piece.</returns>
 		public string GetPieceColour(Location l){
-			return squares[l.Ycord,l.Xcord].GetPiece().colour;
+            
+            try
+            {
+                return squares[l.Ycord, l.Xcord].GetPiece().colour;
+            }
+            catch
+            {
+                Console.WriteLine(l);
+                Console.ReadLine();
+                return null;
+            }
 		}
 
         /// <summary>
@@ -201,7 +215,7 @@ namespace Chess
 
 			Location to = move.To;
 			Location from = move.From;
-			//REMEMBER CHECK FOR CASTLE
+            //REMEMBER CHECK FOR CASTLE
 
 			if (!IsEmpty (to)) { //Player captures piece
 				// Remember to remove pieces from players.
@@ -218,9 +232,28 @@ namespace Chess
 
 			p.Moves++;
 
+            this.reverseLastMove = new Move(to,from);
+
+            //Save the piece incase the move needs to be undone.
+            this.last = captured;
+
 			return captured;
 
 		}
+
+        /// <summary>
+        /// Undoes the last move
+        /// </summary>
+        public void UndoLastMove() {
+
+            Piece p = squares[this.reverseLastMove.From.Ycord, this.reverseLastMove.From.Xcord].GetPiece();
+            p.Location.SetLocation(this.reverseLastMove.To);
+
+            this.SetPiece(p);
+            //WILL THIS CUZ ERRORS??
+            this.SetPiece(last);
+
+        }
 
         /// <summary>
         /// Returns an integer value of the colour of a piece.

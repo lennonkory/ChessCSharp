@@ -26,6 +26,19 @@ namespace Chess
 			}
 		}
 
-	}
+        public void SendMessage(Location location)
+        {
+            this.controller.GetListOfMoves(location);
+        }
+
+        public void SendMessage(string message)
+        { 
+            this.controller.Play(message);   
+        }
+        public void SendMessage(Move move)
+        {
+            controller.Play(move);
+        }
+    }
 }
 

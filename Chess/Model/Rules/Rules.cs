@@ -27,7 +27,7 @@ namespace Chess
         /// </summary>
         /// <param name="b"></param>
         /// <returns>Returns true if the game is over</returns>
-        public abstract bool GameOver(Board b);
+        public abstract bool GameOver(Board b, int colour);
 
         /// <summary>
         /// Validates a move.
@@ -37,7 +37,7 @@ namespace Chess
         /// <returns>True if the move is valid false if not.</returns>
         /// <see cref="Board"/>
         /// <see cref="Move"/>
-		public abstract bool ValidMove(Board board, Move move);
+		public abstract bool ValidMove(Board board, Move move, int colour);
 
 	}
 }

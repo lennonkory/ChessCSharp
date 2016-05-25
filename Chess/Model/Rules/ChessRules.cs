@@ -41,7 +41,6 @@ namespace Chess
 		public override void SetBoard(Board board)
 		{
 			Piece p = board.FindPieceByNameAndColour ("King", "white");
-			Console.WriteLine ("KING: " + p.Location.ToString());
 
 			if (p != null)
 			{
@@ -49,6 +48,7 @@ namespace Chess
 			}
 
 			p = board.FindPieceByNameAndColour ("King", "black");
+
 			if (p != null)
 			{
 				KingBlack = p;
@@ -62,10 +62,9 @@ namespace Chess
         /// <param name="b">The current board.</param>
         /// <returns>true if game is over, false if not</returns>
         /// <see cref="Board"/>
-		public override bool GameOver(Board b)
+		public override bool GameOver(Board b, int colour)
 		{
-			checkmate (b, 0);
-			return false;
+			return checkmate (b, colour);
 		}
 
         /// <summary>
@@ -74,33 +73,92 @@ namespace Chess
         /// <param name="board"></param>
         /// <param name="move"></param>
         /// <returns></returns>
-		public override bool ValidMove(Board board, Move move)
+		public override bool ValidMove(Board board, Move move, int colour)
 		{
-			Console.WriteLine ("Chess rules");
 
-			return true;
+            bool valid = false;
+
+            valid = !inCheck(board, colour);
+
+			return valid;
 		}
 
-		//Public only for testing
-		public bool checkmate(Board b, int colour)
-		{
-			Piece k = null;
+        private void setKing(Location l, int colour)
+        {
+            if (colour == 0)
+            {
+                KingWhite.Location = l;
+            }
+            else
+            {
+                KingBlack.Location = l;
+            }
+        }
 
-			//GetType opp colour
-			if (colour == 0) {
-				k = KingWhite;
-			} 
-			else
-			{
-				k = KingBlack;
-			}
+        //Public only for testing
+        public bool checkmate(Board b, int colour)
+        {
+            Location k = null;
+            string c = "";
 
-			//Console.WriteLine (k.Location);
+            //GetType opp colour
+            if (colour == 0) {
+                k = KingWhite.Location;
+                c = "white";
 
-			Location kingLocation = new Location(k.Location);
+            }
+            else
+            {
+                k = KingBlack.Location;
+                c = "black";
+            }
+
+            //Console.WriteLine (k.Location);
+
+            PlayerView v = new TextView();
+            v.SetBoard(b.Squares);
+
+            ICollection<Piece> pieces = b.GetPlayersPieces(c);
+            bool check;
+
+            foreach (Piece piece in pieces)
+            {
+                ICollection<Location> m = piece.GetMoves(b, this);
+
+                foreach (Location l in m)
+                {
+                    Move move = new Move(piece.Location, l);
+
+                    b.MovePiece(move);
+                    v.SetBoard(b.Squares);
+
+                    if (piece.Name.Equals("King"))
+                    {
+                        this.setKing(l, colour);
+                    }
+
+                    check = this.inCheck(b,colour);
+
+                    b.UndoLastMove();
+
+                    if (piece.Name.Equals("King"))
+                    {
+                        this.setKing(k, colour);
+                    }
+
+                    if (!check) {
+                        return false;
+                    }
+                }
+
+            }
+
+            /*
+            Location kingLocation = new Location(k.Location);
 
 			ICollection<Location> moves = k.GetMoves (b, this);
 
+            Console.WriteLine("Moves: {0}", moves.Count );
 
 			//Check to see if King is in check at current location
 			bool check = inCheck (b, colour);
@@ -112,22 +170,22 @@ namespace Chess
 
 				check = inCheck (b, colour);
 
-				if(!check)
+                //Move King back
+                k.Location = kingLocation;
+                p.Location = l;
+                b.SetPiece(k);
+                b.SetPiece(p);
+
+                if (!check)
 				{
 					return false;
 				}
 
-				//Move King back
-				k.Location = kingLocation;
-				p.Location = l;
-				b.SetPiece (k);
-				b.SetPiece (p);
-
 			}
 
-			//What is the king is the only piece??
-
-			return check;
+			//What if the king is the only piece??
+            */
+			return true;
 
 		}
 
@@ -155,11 +213,13 @@ namespace Chess
 
 			foreach(Piece p in pieces)
 			{
-				//Console.Write (p + " ");
+				Console.WriteLine (p + "  " + k.Location);
 				MoveType mt = p.CanMove(b, this, k.Location);
+                
 				if(mt == MoveType.NORMAL)
 				{
-					return true;
+                    Console.WriteLine(p.Name);
+                    return true;
 				}
 			}
 

@@ -54,31 +54,28 @@ namespace Chess
 			//Check if players own place in the location they are trying to move
 			if (PlayerPieceOnLocation(board, to))
 			{
-                Console.WriteLine("OWN");
 				return MoveType.INVALID;
 			}
 
 			if (to.Xcord - 1 == this.Location.Xcord || to.Xcord + 1 == this.Location.Xcord) {
-				if (to.Ycord - 1 == this.Location.Xcord || to.Ycord + 1 == this.Location.Xcord || to.Ycord == this.Location.Xcord) {
+				if (to.Ycord - 1 == this.Location.Xcord || to.Ycord + 1 == this.Location.Xcord || to.Ycord == this.Location.Ycord) {
 					//check rules
 					return MoveType.NORMAL;
 				} 
 				else 
 				{
-                    Console.WriteLine("LEFT/RIGHT");
                     return MoveType.INVALID;
 				}
 			}
 			else if (to.Xcord == this.Location.Xcord) 
 			{
-                Console.WriteLine(to);
+         
 				if (to.Ycord - 1 == this.Location.Ycord || to.Ycord + 1 == this.Location.Ycord) {
 					//check rules
 					return MoveType.NORMAL;
 				} 
 				else 
 				{
-                    Console.WriteLine("UP?DOWN");
                     return MoveType.INVALID;
 				}
 			}

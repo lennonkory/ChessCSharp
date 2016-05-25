@@ -10,7 +10,7 @@ namespace Chess
 
         private bool CheckFirstChar(char c)
 		{
-			return c >= 'A' && c <= 'Z' ? true : false;
+			return (c >= 'A' && c <= 'H') || (c >= 'a' && c <= 'h') ? true : false;
 		}
 
 		private bool CheckSecondChar(char c)
@@ -21,6 +21,9 @@ namespace Chess
         private int ConvertToInt(char c)
         {
             int t = 0;
+
+            c = Char.ToUpper(c);
+
             switch (c)
             {
                 case 'A':
@@ -81,7 +84,7 @@ namespace Chess
 					one = tokens [1] [0];
 					two = tokens [1] [1];
 					bool second = CheckFirstChar(one) && CheckSecondChar(two);
-
+                    Console.WriteLine("{0} {1}",first, second);
 					return first && second ? InputType.MOVE : InputType.INVALID;
 				}
 				catch(Exception e){

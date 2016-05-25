@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
 
 namespace Chess
 {
@@ -7,8 +10,8 @@ namespace Chess
     /// </summary>
 	public class Controller
 	{
-
-		private View view;
+        private static string SaveLocation = "C:\\Users\\Kory\\Documents\\Code\\ChessNoMerge\\ChessCSharp\\Chess\\saves\\";
+        private PlayerView view;
 		private Game game;
 		private IInputParser ip;
 
@@ -17,7 +20,7 @@ namespace Chess
         /// </summary>
         /// <param name="view">The view the users wish to use. (Text or GUI)</param>
         /// <param name="game">The type of Game the users wish to play.</param>
-		public Controller (View view, Game game)
+		public Controller (PlayerView view, Game game)
 		{
 			this.view = view;
 			this.game = game;
@@ -34,8 +37,9 @@ namespace Chess
 		{
 			game.Start ();
 			view.Start ();
+            //SaveGame("game1.txt");
 
-		}
+        }
 
         /// <summary>
         /// 
@@ -43,8 +47,7 @@ namespace Chess
         /// <param name="command"></param>
 		public void Play(string command)
 		{
-			Console.WriteLine ("Play");
-
+		
 			InputType parse = ip.ParseInput (command);
 
 			if(parse == InputType.INVALID)
@@ -62,8 +65,22 @@ namespace Chess
 			}
 
 		}
-			
 
+        public void Play(Move move) {
+            this.game.Turn(move);
+        }
+
+        public void SaveGame(string filename)
+        {
+
+            string en = game.GetStringPieces();
+            File.WriteAllText(SaveLocation + filename, en);
+        }
+
+        public void GetListOfMoves(Location l)
+        {
+            game.ListMoves(l);
+        }
 	}
 }
 

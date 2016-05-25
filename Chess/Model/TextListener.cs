@@ -5,9 +5,9 @@ namespace Chess
 {
 	public class TextListener : IViewListener
 	{
-		private View view;
+		private PlayerView view;
 
-		public TextListener(View v){
+		public TextListener(PlayerView v){
 			this.view = v;
 		}
 		
@@ -19,16 +19,21 @@ namespace Chess
 			//Console.WriteLine ();
 		}
 
-		public void UpdateBoard(Board board)
+		public void UpdateBoard(Move move, Piece p)
 		{
-			this.view.DrawBoard (board);
+			this.view.MovePiece(move, p);
 		}
 
 
-		public void ShowMoves(Board board, ICollection<Location> moves)
+		public void ShowMoves(ICollection<Location> moves)
 		{
-			this.view.ShowMoves (board, moves);
+			this.view.ShowMoves (moves);
 		}
-	}
+
+        public void SetBoard(Square[,] squares)
+        {
+            this.view.SetBoard(squares);
+        }
+    }
 }
 

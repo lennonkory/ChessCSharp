@@ -32,23 +32,15 @@
             <param name="rules"></param>
             <returns></returns>
         </member>
-        <member name="M:Chess.MainClass.test(Chess.Board,Chess.Move)">
+        <member name="M:Chess.MainClass.test">
             <summary>
             Used to Test functionallity above unit testing.
             </summary>
-            <param name="b"></param>
-            <param name="m"></param>
         </member>
-        <member name="M:Chess.MainClass.Play">
+        <member name="M:Chess.MainClass.Play(Chess.View.Gui)">
             <summary>
             Sets up a chess game. This functionality will be replace with a Factory pattern.
             </summary>
-        </member>
-        <member name="M:Chess.MainClass.Main(System.String[])">
-            <summary>
-            Main starting point of program.
-            </summary>
-            <param name="args"></param>
         </member>
         <member name="T:Chess.Board">
             <summary>
@@ -169,6 +161,11 @@
             </summary>
             <param name="move"></param>
             <returns>Returns piece that was cpatured.</returns>
+        </member>
+        <member name="M:Chess.Board.UndoLastMove">
+            <summary>
+            Undoes the last move
+            </summary>
         </member>
         <member name="M:Chess.Board.GetPieceColourInt(Chess.Location)">
             <summary>
@@ -504,12 +501,120 @@
             Sets up a chess board.
             </summary>
         </member>
+        <member name="T:Chess.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.bbishop">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.bking">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.bknight">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.bpawn">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.bqueen">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.bqueen1">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.brook">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.chess_piece_king">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.chessBoard">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.wbishop">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.wking">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.wknight">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.wpawn">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.wqueen">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Chess.Properties.Resources.wrook">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="F:Chess.View.Gui.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Chess.View.Gui.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Chess.View.Gui.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="T:Chess.Controller">
             <summary>
             Controller for Chess/Checkers game.
             </summary>
         </member>
-        <member name="M:Chess.Controller.#ctor(Chess.View,Chess.Game)">
+        <member name="M:Chess.Controller.#ctor(Chess.PlayerView,Chess.Game)">
             <summary>
             Creates a new Controller object.
             </summary>
@@ -650,7 +755,7 @@
             </summary>
             <param name="vl"></param>
         </member>
-        <member name="M:Chess.Game.DrawBoard">
+        <member name="M:Chess.Game.DrawBoard(Chess.Move,Chess.Piece)">
             <summary>
             Set this to private after testing.
             </summary>
@@ -696,14 +801,14 @@
             </summary>
             <param name="b"></param>
         </member>
-        <member name="M:Chess.Rules.GameOver(Chess.Board)">
+        <member name="M:Chess.Rules.GameOver(Chess.Board,System.Int32)">
             <summary>
             Checks to see if the game is over.
             </summary>
             <param name="b"></param>
             <returns>Returns true if the game is over</returns>
         </member>
-        <member name="M:Chess.Rules.ValidMove(Chess.Board,Chess.Move)">
+        <member name="M:Chess.Rules.ValidMove(Chess.Board,Chess.Move,System.Int32)">
             <summary>
             Validates a move.
             </summary>
@@ -741,7 +846,7 @@
             <param name="board">The current board.</param>
             <see cref="T:Chess.Board"/>
         </member>
-        <member name="M:Chess.ChessRules.GameOver(Chess.Board)">
+        <member name="M:Chess.ChessRules.GameOver(Chess.Board,System.Int32)">
             <summary>
             Checks if the game is over.
             </summary>
@@ -749,7 +854,7 @@
             <returns>true if game is over, false if not</returns>
             <see cref="T:Chess.Board"/>
         </member>
-        <member name="M:Chess.ChessRules.ValidMove(Chess.Board,Chess.Move)">
+        <member name="M:Chess.ChessRules.ValidMove(Chess.Board,Chess.Move,System.Int32)">
             <summary>
             Checks if a move is valid or not
             </summary>

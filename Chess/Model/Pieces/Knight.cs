@@ -138,8 +138,6 @@ namespace Chess
 
 			Location from = this.Location;
 
-
-
 			if(Math.Abs(to.Xcord - from.Xcord) == 1 && Math.Abs(to.Ycord - from.Ycord) == 2)
 			{
 				return MoveType.NORMAL;
