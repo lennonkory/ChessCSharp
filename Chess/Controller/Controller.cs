@@ -68,6 +68,7 @@ namespace Chess
 
         public void Play(Move move) {
             this.game.Turn(move);
+            SaveGame("game1.txt");
         }
 
         public void SaveGame(string filename)

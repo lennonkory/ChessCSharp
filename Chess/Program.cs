@@ -32,8 +32,8 @@ namespace Chess
 		{
             
             IBoardParser bp = new ChessBoardParser ();
-			string boardName = "board1.txt";
-			ICollection<Piece> pieces = bp.ParseBoard ("../../boards/"+boardName);
+			string boardName = "game1.txt";
+			ICollection<Piece> pieces = bp.ParseBoard ("../../saves/"+boardName);
 
             Board b = new Board (new SetUpChessBoard(), pieces);
             PlayerView v = new GuiView (gui);

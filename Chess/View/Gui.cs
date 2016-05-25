@@ -190,10 +190,8 @@ namespace Chess.View
 
         private void select_piece(object sender, EventArgs e)
         {
-            Debug.WriteLine("SELECT");
+            
             PieceBox p = (PieceBox)sender;
-
-
 
             this.label1.Text = "X: " + MousePosition.X + " Y: " + MousePosition.Y;
             this.label1.Text += "\n" + p.Location;
@@ -299,14 +297,5 @@ namespace Chess.View
             this.cl = cl;
         }
 
-        private void toolStripContainer1_TopToolStripPanel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripContainer1_ContentPanel_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
